@@ -26,7 +26,6 @@ instance.interceptors.response.use( response =>{
   catch(err) {
       console.log(err)
   }
-    
     return Promise.reject(error);
   }
 );

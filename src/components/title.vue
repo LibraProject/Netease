@@ -1,0 +1,44 @@
+<template>
+    <div class="netitle">
+        {{title}}
+    </div>
+</template>
+<script>
+export default {
+    props:{
+        title:String
+    },
+    components:{
+
+    },
+    data(){
+        return {
+
+        }
+    },
+    computed:{
+
+    },
+    methods:{
+
+    },
+    created(){
+
+    },
+    mounted(){
+
+    }
+}
+</script>
+<style scoped>
+.netitle{
+    margin-top: 0.1rem;
+    height: .6rem;
+    background: white;
+    text-align: center;
+    font-size: .2rem;
+    line-height: .6rem;
+    letter-spacing: .02rem;
+    font-weight: bold;
+}
+</style>
