@@ -5,13 +5,13 @@
         </div>
         <div class="loginMain">
           <div class="inputWrap onePx_bottom">
-            <input type="text" ref="phoneNumber" defaultValue={15323807318} placeholder="请输入手机号码" />
+            <input type="text" v-model="mobile" placeholder="请输入手机号码" @change="telphone"/>
           </div>
           <div class="inputWrap onePx_bottom">
-            <input type="password" ref="passwords" defaultValue={123456} placeholder="请输入登录密码" />
+            <input type="password" v-model="password" placeholder="请输入登录密码" @change="passChange" />
           </div>
           <div class="loginBtn">
-            <button>登录</button>
+            <button @click="submit">登录</button>
           </div>
         </div>
       </div>
@@ -21,14 +21,33 @@
     export default {
         data() {
           return {
-            
+              mobile:'' || window.localStorage.getItem('nideShopUser'),
+              password:'' || window.localStorage.getItem('password'),
           }
         },
-        mounted() {
-          
-        },
         methods: {
-          
+          telphone(e){
+              this.mobile=e.target.value
+          },
+          passChange(e){
+            this.password=e.target.value
+          },
+          submit(){
+            if(this.mobile !== '15323807318'){
+                alert('手机号错误，请重新输入！')
+            }
+
+            if(this.password !== '123456'){
+               alert('密码错误，请重新输入！')
+            }
+
+            this.$store.dispatch('login/getUserLogin',{
+              mobile:this.mobile,
+              password:this.password
+            })
+            
+            this.$router.history.replace('/home')
+          }
         },
     }
 </script>
