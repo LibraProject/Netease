@@ -1,15 +1,46 @@
 <template>
-    <div>
-        首页
+    <div class="wrap">
+       
     </div>
 </template>
-
 <script>
-    export default {
-        
+import {getList} from '../../service/service'
+export default {
+    props:{
+
+    },
+    components:{
+
+    },
+    data(){
+        return {
+            list:{}
+        }
+    },
+    computed:{
+
+    },
+    methods:{
+       getDate: async (that)=>{
+           let result = await getList();
+           console.log(that)
+           that.list = result.data
+           console.log(result.data)
+       } 
+    },
+    created(){
+      this.getDate(this)
+    },
+    mounted(){
+
     }
+}
 </script>
-
-<style lang="scss" scoped>
-
+<style scoped>
+.wrap{
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+    font-size: .14rem;
+}
 </style>
