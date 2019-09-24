@@ -4,11 +4,10 @@
       <div class="swiper-slide" v-for="item in topicList" :key="item.id">
         <img class="Pices" :src="item.scene_pic_url" alt />
         <div class="topGoodSubTitle">
-            {{item.title}} <span class="topGoodPrice">￥ {{item.price_info}}</span>
+          {{item.title}}
+          <span class="topGoodPrice">￥ {{item.price_info}}</span>
         </div>
-        <div class="topGoodTitle">
-            {{item.subtitle}}
-        </div>
+        <div class="topGoodTitle">{{item.subtitle}}</div>
       </div>
     </div>
   </div>
@@ -28,13 +27,12 @@ export default {
   created() {
     this.$nextTick(() => {
       this.seam = new swiper(".seamless", {
-       autoplay : false,     
-        speed:3000,
-        loop : true,
-        freeMode:true,
-        slidesPerView : 1,
-        slidesPerGroup : 1,
-
+        autoplay: false,
+        speed: 3000,
+        loop: true,
+        freeMode: true,
+        slidesPerView: 1,
+        slidesPerGroup: 1
       });
     });
   },
@@ -42,31 +40,31 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.seamless{
-    background: white;
+.seamless {
+  background: white;
 }
-.swiper-slide{
-    box-sizing: border-box;
-    padding: 0.1rem;
+.swiper-slide {
+  box-sizing: border-box;
+  padding: 0.1rem;
 }
-.topGoodSubTitle{
-        margin-top: .1rem;
-    height: .2rem;
-    line-height: .2rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    .topGoodPrice{
-        color: darkred;
-    }
+.topGoodSubTitle {
+  margin-top: 0.1rem;
+  height: 0.2rem;
+  line-height: 0.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  .topGoodPrice {
+    color: darkred;
+  }
 }
-.topGoodTitle{
-    height: .2rem;
-    line-height: .2rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: .12rem;
-    color: #ccc;
+.topGoodTitle {
+  height: 0.2rem;
+  line-height: 0.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.12rem;
+  color: #ccc;
 }
 </style>
