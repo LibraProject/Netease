@@ -1,6 +1,6 @@
 <template>
     <div class="topicDetail">
-        <Header></Header>
+        <Header :txt="title"></Header>
         <main>
             <div class="topicDetailImg" v-html="detailList.content"></div>
 
@@ -31,7 +31,8 @@
     export default {
         data() {
             return {
-               id:''
+               id:'',
+               title:"关爱他成长的每一个足迹"
             }
         },
         components:{

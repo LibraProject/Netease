@@ -15,9 +15,11 @@
 html,body,#app{
     width: 100%;
     height: 100%;
+    font-size: .14rem;
 }
 html{
     font-size: calc(100/375*100vw)
 }
+
 
 </style>

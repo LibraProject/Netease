@@ -1,13 +1,21 @@
 <template>
     <div class="head">
         <span @click="goback">＜</span>
-        <span>关爱他成长的每一个足迹</span>
+        <span>{{txt}}</span>
         <span></span>
     </div>
 </template>
 
 <script>
     export default {
+        props:{
+            txt:String
+        },
+        deta(){
+            return {
+
+            }
+        },
         methods: {
             goback(){
                 this.$router.history.go(-1)

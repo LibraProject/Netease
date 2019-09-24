@@ -54,7 +54,6 @@ export default {
   font-size: 0.14rem;
   overflow: hidden;
   box-sizing: border-box;
-  background: #826c6c0d;
   display: flex;
   flex-direction: column;
 }

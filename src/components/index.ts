@@ -8,5 +8,6 @@ module.exports =  {
      category :()=>import( './category.vue'),
      foots:()=>import('./footers.vue'),
      seamless:()=>import('./seamless.vue'),
-     shoplist:()=>import('./shoplist.vue')
+     shoplist:()=>import('./shoplist.vue'),
+     headers:()=>import('./header.vue')
 }
