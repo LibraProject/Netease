@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div class="foots">
         <span>
             <svg t="1569306409581" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1137" width="20" height="20"><path d="M946.64 491.81l-385.5-379.58a70 70 0 0 0-98.21 0L77.37 491.81C49 519.74 68.78 568 108.58 568H174v352.1a40 40 0 0 0 40 40h237.86V668a20 20 0 0 1 20-20h80a20 20 0 0 1 20 20v292.11h236.19a40 40 0 0 0 40-40V568h67.38c39.8 0 59.57-48.26 31.21-76.19zM768.05 840.08a40 40 0 0 1-40 40h-76.18V608a40 40 0 0 0-40-40h-200a40 40 0 0 0-40 40v272.09H294a40 40 0 0 1-40-40V488h-25.54a14 14 0 0 1-9.77-24L484 205.53c15.57-17.23 40.55-17.22 56.12 0L805.38 464a14 14 0 0 1-9.77 24h-27.56v352.08z" fill="#999999" p-id="1138"></path></svg>
@@ -21,34 +22,26 @@
             <router-link to="/mine">我的</router-link>
         </span>
     </div>
+=======
+  <div class="foots">
+    
+  </div>
+>>>>>>> c5b23f806778e3b5e263ab4392cbbb375c7d8cbd
 </template>
 <script>
 export default {
-    props:{
-
-    },
-    components:{
-
-    },
-    data(){
-        return {
-
-        }
-    },
-    computed:{
-
-    },
-    methods:{
-
-    },
-    created(){
-
-    },
-    mounted(){
-
-    }
-}
+  props: {},
+  components: {},
+  data() {
+    return {};
+  },
+  computed: {},
+  methods: {},
+  created() {},
+  mounted() {}
+};
 </script>
+<<<<<<< HEAD
 <style lang="scss">
 .foots{
     position: fixed;
@@ -67,5 +60,18 @@ export default {
             color: #000
         }
     }
+=======
+<style scoped lang="scss">
+.foots {
+  width: 100%;
+  height: 0.5rem;
+  display: flex;
+  span {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+>>>>>>> c5b23f806778e3b5e263ab4392cbbb375c7d8cbd
 }
 </style>

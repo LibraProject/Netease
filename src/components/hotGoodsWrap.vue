@@ -45,7 +45,7 @@ export default {
     .hotGoodsItem{
         display: flex;
         height: 1.5rem;
-         border-bottom:1px solid #ccc;
+         border-top:1px solid #ccc;
         img{
             width: auto;
             height: 90%;
