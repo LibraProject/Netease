@@ -6,5 +6,7 @@ module.exports =  {
      newGood :()=>import( "./newGoodsBox.vue"),
      hotGoods :()=>import( "./hotGoodsWrap.vue"),
      category :()=>import( './category.vue'),
-     foots:()=>import('./footers.vue')
+     foots:()=>import('./footers.vue'),
+     seamless:()=>import('./seamless.vue'),
+     shoplist:()=>import('./shoplist.vue')
 }

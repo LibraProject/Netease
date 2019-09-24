@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
       <div class="main">
-          <swiper :banrlist="list.banner" />
+        <swiper :banrlist="list.banner" />
         <ptlist :channel="list.channel" />
         <ptitles :title="ptitle" />
         <branwrap :brandList="list.brandList" />
@@ -11,7 +11,8 @@
         <hotGoods :hotGoods="list.hotGoodsList"/>
         <ptitles :title="zhuanti" />
         <category :category="list.categoryList"/>
-        <swiper :banrlist="list.topicList" />
+        <seamless :topicList="list.topicList"/>
+        <shoplist :shopArr="list.categoryList"/>
       </div>
     
     <foots/>
@@ -19,10 +20,10 @@
 </template>
 <script>
 import { getList } from "@/service";
-import {swiper, ptlist, ptitles, branwrap, newGood, hotGoods, category, foots} from '@/components'
+import {swiper, ptlist, ptitles, branwrap, newGood, hotGoods, category, foots, seamless, shoplist } from '@/components'
 export default {
   props: {},
-  components: { swiper, ptlist, ptitles, branwrap, newGood, hotGoods, category, foots},
+  components: { swiper, ptlist, ptitles, branwrap, newGood, hotGoods, category, foots, seamless, shoplist },
   data() {
     return {
       list: {},
@@ -53,7 +54,7 @@ export default {
   font-size: 0.14rem;
   overflow: hidden;
   box-sizing: border-box;
-  background: #eee;
+  background: #826c6c0d;
   display: flex;
   flex-direction: column;
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="swiper-container">
+    <div class="swiper-container swipers">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="item in banrlist" :key="item.id">
           <img class="Pices" :src="item.image_url" alt />
@@ -12,12 +12,11 @@
 <script>
 import swiper from "swiper";
 export default {
-  name:'swiper',
   props: ["banrlist"],
   components: {},
   data() {
     return {
-      list: {}
+      headper:''
     };
   },
   computed: {},
@@ -25,7 +24,7 @@ export default {
   created() {},
   mounted() {
     this.$nextTick(() => {
-      new swiper(".swiper-container", {
+       this.headper = new swiper(".swipers", {
         loop: true,
         autoplay: true,
         pagination: {
