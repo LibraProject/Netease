@@ -20,5 +20,4 @@
     html {
         font-size: calc(100 / 375 * 100vw);
     }
-    
 </style>

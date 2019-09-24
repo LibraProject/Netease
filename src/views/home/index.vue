@@ -65,5 +65,6 @@ export default {
 .main{
     flex: 1;
     overflow-y: scroll;
+    margin-bottom: .5rem;
 }
 </style>
