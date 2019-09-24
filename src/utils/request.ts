@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://127.0.0.1:8888',
+    baseURL: 'http://169.254.198.188:8888',
     timeout: 2000
 });
 
@@ -26,6 +26,7 @@ instance.interceptors.response.use( response =>{
   catch(err) {
       console.log(err)
   }
+    
     return Promise.reject(error);
   }
 );
