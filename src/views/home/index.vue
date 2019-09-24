@@ -2,16 +2,16 @@
   <div class="wrap">
       <div class="main">
           <swiper :banrlist="list.banner" />
-        <ptlist :channel="list.channel" />
-        <ptitles :title="ptitle" />
-        <branwrap :brandList="list.brandList" />
-        <ptitles :title="newpin" />
-        <newGood :newGoodList="list.newGoodsList" />
-        <ptitles :title="Preole" />
-        <hotGoods :hotGoods="list.hotGoodsList"/>
-        <ptitles :title="zhuanti" />
-        <category :category="list.categoryList"/>
-        <swiper :banrlist="list.topicList" />
+          <ptlist :channel="list.channel" />
+          <ptitles :title="ptitle" />
+          <branwrap :brandList="list.brandList" />
+          <ptitles :title="newpin" />
+          <newGood :newGoodList="list.newGoodsList" />
+          <ptitles :title="Preole" />
+          <hotGoods :hotGoods="list.hotGoodsList"/>
+          <ptitles :title="zhuanti" />
+          <category :category="list.categoryList"/>
+          <!-- <swiper :banrlist="list.topicList" /> -->
       </div>
     
     <foots/>
@@ -64,5 +64,6 @@ export default {
 .main{
     flex: 1;
     overflow-y: scroll;
+    margin-bottom: .5rem;
 }
 </style>

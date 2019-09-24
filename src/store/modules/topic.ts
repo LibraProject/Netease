@@ -3,11 +3,16 @@ import { topic, topicDetail } from '../../service'
 export default {
     namespaced: true,
     state: {
-        list:[]
+        list:[],
+        detailList:{},
     },
     mutations: {
         setTopic(state:any,payload:any){
             state.list=payload.data
+        },
+        setTopicDetail(state:any,payload:any){
+            state.detailList=payload
+            console.log(payload)
         }
     },
     actions: {
@@ -18,8 +23,8 @@ export default {
         },
         async  getTopicDetail({ commit }: any, payload: object) {
             let result = await topicDetail(payload)
-            // commit('setTopic',result.data)
-            console.log(result,111)
+            commit('setTopicDetail',result.data)
+            console.log(result.data,111)
         }
     }
 }

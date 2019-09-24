@@ -1,21 +1,29 @@
 <template>
     <div class="tabPageContent">
-        <router-link class="topicItem" v-for="(item,i) in list" :key="i" :to="`/topicDetail/${item.id}`">
-            <img :src="item.scene_pic_url" alt="">
-            <div class="topicItemTitle">{{item.title}}</div>
-            <div class="topicItemSubtitle">{{item.subtitle}}</div>
-            <div class="topicItemPrice">{{item.price_info}}元起</div>
-        </router-link>
+        <div class="main">
+            <router-link class="topicItem" v-for="(item,i) in list" :key="i" :to="`/topicDetail/${item.id}`">
+                <img :src="item.scene_pic_url" alt="">
+                <div class="topicItemTitle">{{item.title}}</div>
+                <div class="topicItemSubtitle">{{item.subtitle}}</div>
+                <div class="topicItemPrice">{{item.price_info}}元起</div>
+            </router-link>
+        </div>
+        <foots></foots>
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
+    import {foots} from '@/components'
+
     export default {
         data() {
             return {
                
             }
+        },
+        components:{
+            foots
         },
         computed:{
             ...mapState({
@@ -37,6 +45,9 @@
 </script>
 
 <style scoped>
+.main{
+    margin-bottom: .5rem;
+}
 .topicItem{
     height: 2.9rem;
     margin-top: .1rem;
