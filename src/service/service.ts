@@ -3,8 +3,8 @@ import request from '../utils/request'
 export let  getList = ()=>{
      return request.get('/');
 }
-
 // 奇趣分类获取数据
 export let categorys = (id: any)=>{
-     return request.get('/goods/category',id)
+     console.log(id)
+     return request.get(`/goods/category?id=${id}`)
 }

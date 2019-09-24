@@ -38,7 +38,6 @@ export default {
     getDate: async that => {
       let result = await getList();
       that.list = result.data;
-      console.log(result.data);
     }
   },
   created() {

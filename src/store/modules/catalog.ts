@@ -11,9 +11,10 @@ export default {
         }
     },
     actions: {
-       async categorys({commit}:any){
-            let result = categorys(1000)
-            commit('')
+       async categorys({commit}:any,id:any){
+        //    console.log(id,'store----action')
+            let result = await categorys(id)
+            console.log(result)
        }
     }
 }

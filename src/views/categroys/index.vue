@@ -1,20 +1,30 @@
 <template>
     <div class="wrap">
         <headers :txt="txt" />
-        
     </div>
 </template>
 
 <script>
 import {headers} from '@/components'
+import { mapActions } from 'vuex'
     export default {
         data(){
             return {
                 txt:"奇趣分类"
             }
         },
-        components:{headers}
-    }
+        components:{headers},
+        computed:{
+            
+        },
+        methods:{
+            ...mapActions('catalog',['categorys']),
+
+        },
+        created(){
+            this.categorys(1005000)
+        }
+    }   
 </script>
 
 <style lang="scss" scoped>
