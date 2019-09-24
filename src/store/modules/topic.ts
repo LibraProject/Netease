@@ -12,14 +12,12 @@ export default {
         },
         setTopicDetail(state:any,payload:any){
             state.detailList=payload
-            console.log(payload)
         }
     },
     actions: {
         async  getTopic({ commit }: any, payload: object) {
             let result = await topic(payload)
             commit('setTopic',result.data)
-            // console.log(result)
         },
         async  getTopicDetail({ commit }: any, payload: object) {
             let result = await topicDetail(payload)

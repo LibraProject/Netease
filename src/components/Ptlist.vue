@@ -16,8 +16,8 @@ export default {
   computed: {},
   methods: {
     goCateGroys(id){
-      console.log(id)
-      this.$router.history.push({name:"分类商品",params:{id}})
+      // console.log(id)
+      this.$router.push({name:"分类商品",params:{id}})
     }
   },
   created() {},

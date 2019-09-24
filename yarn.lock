@@ -905,6 +905,14 @@ babel-eslint@^10.0.1:
     eslint-visitor-keys "^1.0.0"
     resolve "^1.12.0"
 
+babel-runtime@^6.0.0:
+  version "6.26.0"
+  resolved "http://r.cnpmjs.org/babel-runtime/download/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
+
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/balanced-match/download/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -939,6 +947,13 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
+
+better-scroll@^1.15.2:
+  version "1.15.2"
+  resolved "http://r.cnpmjs.org/better-scroll/download/better-scroll-1.15.2.tgz#65ffc6058b8b4ff337b8dfad4bcb334d7699ceb6"
+  integrity sha1-Zf/GBYuLT/M3uN+tS8szTXaZzrY=
+  dependencies:
+    babel-runtime "^6.0.0"
 
 bfj@^6.1.1:
   version "6.1.2"
@@ -1710,6 +1725,11 @@ copy-webpack-plugin@^4.6.0:
     minimatch "^3.0.4"
     p-limit "^1.0.0"
     serialize-javascript "^1.4.0"
+
+core-js@^2.4.0:
+  version "2.6.9"
+  resolved "http://r.cnpmjs.org/core-js/download/core-js-2.6.9.tgz#6b4b214620c834152e179323727fc19741b084f2"
+  integrity sha1-a0shRiDINBUuF5Mjcn/Bl0GwhPI=
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -6293,6 +6313,11 @@ regenerate@^1.2.1:
   version "1.4.0"
   resolved "https://registry.npm.taobao.org/regenerate/download/regenerate-1.4.0.tgz#4a856ec4b56e4077c557589cae85e7a4c8869a11"
   integrity sha1-SoVuxLVuQHfFV1icroXnpMiGmhE=
+
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "http://r.cnpmjs.org/regenerator-runtime/download/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+  integrity sha1-vgWtf5v30i4Fb5cmzuUBf78Z4uk=
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"
