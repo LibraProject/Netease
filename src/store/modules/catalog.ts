@@ -8,7 +8,6 @@ export default {
     },
     mutations: {
         setCate(state: any,payload: any){
-            // console.log(payload,'---payload')
             state.categorysArr = payload
         }
     },

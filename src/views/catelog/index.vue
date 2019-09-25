@@ -1,71 +1,95 @@
 <template>
-    <div class="wrap">
-        <headers :txt="txt"/>
-        <div class="main">
-            <div class="cateR">
-                <ul>
-                    <li v-for="(item,index) in categorysArr" :class="{lactive:ind==index}" :key="item.id">{{item.name}}</li>
-                </ul>
-            </div>
-        </div>
-        <foots/>
+  <div class="wrap">
+    <headers :txt="txt" />
+    <div class="main">
+      <div class="cateR">
+        <ul>
+          <li v-for="(item,index) in categorysArr" :class="{active:ind==index}" @click="clickme(item.id,index)" :key="item.id" >{{item.name}}</li>
+        </ul>
+      </div>
     </div>
+    <foots />
+  </div>
 </template>
 
 <script>
-import { headers, foots } from '@/components';
-import { mapState, mapActions } from 'vuex'
-    export default {
-        data(){
-            return {
-                txt:"商品分类",
-                ind:0
-            }
-        },
-        components:{headers,foots},
-        computed:{
-            ...mapState('catalog',['categorysArr'])
-        },
-        methods:{
-            ...mapActions('catalog',['categorys'])
-        },
-        created(){
-            this.categorys()
-        }
+import { headers, foots } from "@/components";
+import { mapState, mapActions } from "vuex";
+export default {
+  data() {
+    return {
+      txt: "商品分类",
+      ind: 0
+    };
+  },
+  components: { headers, foots },
+  computed: {
+    ...mapState("catalog", ["categorysArr"])
+  },
+  methods: {
+    ...mapActions("catalog", ["categorys"]),
+    clickme(id, ind) {
+      this.ind = ind;
+      console.log(id);
     }
+  },
+  created() {
+    this.categorys();
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-.wrap{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display:flex;
-    flex-direction: column;
-    padding: .5rem 0;
+.wrap {
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
 }
-.main{
-    display:flex;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    .cateR{
-        width: 25%;
-        ul{
-            width: 100%;
-            li{
-                width: 100%;
-                height: .45rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .lactive{
-                border-left: 2px solid rgb(55, 181, 231);
-                color: rgb(55, 181, 231);
-            }
-        }
+.main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  .cateR {
+    width: 25%;
+    position: relative;
+    ul {
+      width: 100%;
+      li {
+        width: 100%;
+        height: 0.45rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 2s all linear;
+      }
+      .lactive {
+        border-left: 1px solid rgb(103, 192, 228);
+      }
+
+      // .lactive::before {
+      //     content: "";
+      //     position: absolute;
+      //     top: 0;
+      //     left: 0%;
+      //     width: 0;
+      //     height: .45rem;
+      //     border-left: 2px solid rgb(103, 192, 228);
+      //     transition: 0.2s all linear;
+      // }
+
+      // .lactive:active {
+      //     background: rgb(103, 192, 228);
+      //     color: #fff;
+      // }
+
+      // .active~.lactive::before {
+      //     left: 0;
+      // }
     }
-    
+  }
 }
 </style>

@@ -90,7 +90,6 @@ export default {
 .cateBox{
     width: 100%;
     height: .45rem;
-    display: flex;
     overflow: hidden;
     .catd{
         display: flex;
