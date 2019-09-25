@@ -3,7 +3,7 @@
       <div class="brandItem" v-for="ele in brandList" :key="ele.name">
         <div class="brandItemName">{{ele.name}}</div>
         <div class="brandItemMinPrice">{{ele.floor_price}}元起</div>
-        <img :src="ele.new_pic_url" alt />
+        <img v-lazy="ele.new_pic_url" alt />
       </div>
     </div>
 </template>

@@ -7,7 +7,7 @@
         v-for="(item,index) in ele.goodsList"
         :key="item.name"
       >
-        <img :src="item.list_pic_url" alt />
+        <img v-lazy="item.list_pic_url" alt />
         <p>{{item.name}}</p>
         <p class="catePrice">￥ {{item.retail_price}}</p>
       </div>

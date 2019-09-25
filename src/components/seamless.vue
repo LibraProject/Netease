@@ -2,7 +2,7 @@
   <div class="swiper-container seamless">
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="item in topicList" :key="item.id">
-        <img class="Pices" :src="item.scene_pic_url" alt />
+        <img class="Pices" v-lazy="item.scene_pic_url" alt />
         <div class="topGoodSubTitle">
           {{item.title}}
           <span class="topGoodPrice">￥ {{item.price_info}}</span>

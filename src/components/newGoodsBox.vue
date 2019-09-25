@@ -1,7 +1,7 @@
 <template>
   <div class="newGoodsBox">
       <div class="newGoodsItem" v-for="element in newGoodList" :key="element.id">
-          <img :src="element.list_pic_url" alt="">
+          <img v-lazy="element.list_pic_url" alt="">
           <p>{{element.name}}</p>
           <b class="Picolor">￥ {{element.retail_price}}</b>
       </div>

@@ -1,7 +1,7 @@
 <template>
     <swiper :options="swiperOption">
       <swiper-slide v-for="item in banrlist" :key="item.id">
-          <img class="Pices" :src="item.image_url" alt />
+          <img class="Pices" v-lazy="item.image_url" alt />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>

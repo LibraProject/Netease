@@ -10,7 +10,6 @@ Vue.use(VueLazyload, {
   attempt: 1
 })
 
-Vue.config.productionTip = false
 
 new Vue({
   router,

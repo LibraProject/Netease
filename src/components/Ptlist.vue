@@ -1,7 +1,7 @@
 <template>
   <div class="Ptlist">
     <div class="Ptlists" v-for="item in channel" :key="item.id" @click="goCateGroys(item.id)">
-      <img :src="item.icon_url" alt />
+      <img v-lazy="item.icon_url" alt />
       <p>{{item.name}}</p>
     </div>
   </div>
