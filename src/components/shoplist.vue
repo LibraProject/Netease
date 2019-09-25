@@ -20,7 +20,9 @@
 </template>
 <script>
 export default {
-  props: ["shopArr"],
+  props: {
+    shopArr:Array
+  },
   components: {},
   data() {
     return {};
