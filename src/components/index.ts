@@ -10,5 +10,6 @@ module.exports =  {
      seamless:()=>import('./seamless.vue'),
      shoplist:()=>import('./shoplist.vue'),
      headers:()=>import('./header.vue'),
-     bscrolls:()=>import('./bettScroll.vue')
+     bscrolls:()=>import('./bettScroll.vue'),
+     cateGoryGoods:()=>import('./cateGoryGoods.vue')
 }

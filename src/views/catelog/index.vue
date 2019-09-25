@@ -14,7 +14,7 @@
           <div class="catetitle">——&emsp;{{categorysArr[ind].name}}&emsp;——</div>
           <div class="heng" v-if="renderArr.length">
               <div class="newGoodsItem" v-for="element in renderArr" :key="element.id" @click="goCateDetail(element.id)">
-                <img :src="element.wap_banner_url" alt="">
+                <img v-lazy="element.wap_banner_url" alt="">
                 <p>{{element.name}}</p>
               </div>
           </div>

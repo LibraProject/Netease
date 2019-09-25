@@ -13,7 +13,7 @@
                 </div>
 
                 <div v-if="commitDate.length===0" class="noComment">
-                    <img src="@/static/img/comment.png" alt="">
+                    <img src="/img/comment.png" alt="">
                     <span>等你来消息</span>
                 </div>
 

@@ -16,15 +16,24 @@
         <!-- <div class="categoryDetail" v-for="item in arr" :key="item.id">
             <div>{{item.name}}</div>
             <div>{{item.front_name}}</div>
+<<<<<<< HEAD
         </div> -->
         <!-- <newGood :newGoodList="renderArr"></newGood> -->
         <bscrolls/>
+=======
+        </div>
+        <cateGoryGoods :goodsList="renderList"></cateGoryGoods>
+>>>>>>> 59f298ca7b283a2e07e71d00d1020f8ea5b15c6d
     </div>
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 import { headers, newGood, bscrolls } from "@/components";
+=======
+import { headers, cateGoryGoods } from "@/components";
+>>>>>>> 59f298ca7b283a2e07e71d00d1020f8ea5b15c6d
 import { mapActions, mapState } from "vuex";
 import BScroll from 'better-scroll'
 
@@ -32,7 +41,7 @@ export default {
   data() {
     return {
       txt: "奇趣分类",
-      id:'',
+      id:'1005000',
       element:[],
       // renderArr:[],
       scroll:null,
@@ -40,13 +49,17 @@ export default {
   },
   components: { 
     headers,
+<<<<<<< HEAD
     newGood,
     bscrolls
+=======
+    cateGoryGoods
+>>>>>>> 59f298ca7b283a2e07e71d00d1020f8ea5b15c6d
   },
   computed: {
       ...mapState({
           categorysArr:state=>state.catalog.categorysArr,
-          renderArr:state=>state.catalog.renderArr,
+          renderList:state=>state.catalog.renderList,
           arr:state=>state.catalog.arr,
       })
   },
@@ -105,6 +118,7 @@ export default {
         height: .45rem;
         overflow: hidden;
         background-color: #fff;
+        position: absolute;
         .content{
           width: 6.75rem;
           height: 100%;
@@ -121,6 +135,7 @@ export default {
 }
 .categoryDetail{
     padding: .1rem 0;
+    margin-top: .4rem;
     div:nth-of-type(1){
       height: .3rem;
       line-height: .3rem;
