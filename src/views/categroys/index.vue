@@ -17,13 +17,13 @@
             <div>{{item.name}}</div>
             <div>{{item.front_name}}</div>
         </div>
-        <newGood :newGoodList="renderArr"></newGood>
+        <cateGoryGoods :goodsList="renderList"></cateGoryGoods>
     </div>
   </div>
 </template>
 
 <script>
-import { headers, newGood } from "@/components";
+import { headers, cateGoryGoods } from "@/components";
 import { mapActions, mapState } from "vuex";
 import BScroll from 'better-scroll'
 
@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       txt: "奇趣分类",
-      id:'',
+      id:'1005000',
       element:[],
       // renderArr:[],
       scroll:null,
@@ -39,12 +39,12 @@ export default {
   },
   components: { 
     headers,
-    newGood
+    cateGoryGoods
   },
   computed: {
       ...mapState({
           categorysArr:state=>state.catalog.categorysArr,
-          renderArr:state=>state.catalog.renderArr,
+          renderList:state=>state.catalog.renderList,
           arr:state=>state.catalog.arr,
       })
   },
@@ -100,6 +100,7 @@ export default {
         height: .45rem;
         overflow: hidden;
         background-color: #fff;
+        position: absolute;
         .content{
           width: 6.75rem;
           height: 100%;
@@ -116,6 +117,7 @@ export default {
 }
 .categoryDetail{
     padding: .1rem 0;
+    margin-top: .4rem;
     div:nth-of-type(1){
       height: .3rem;
       line-height: .3rem;

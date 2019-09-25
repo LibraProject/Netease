@@ -2,7 +2,7 @@
     <div class="tabPageContent">
         <div class="main">
             <router-link class="topicItem" v-for="(item,i) in list" :key="i" :to="`/topicDetail/${item.id}`">
-                <img :src="item.scene_pic_url" alt="">
+                <span :style="{backgroundImage:`url(${item.scene_pic_url})`}"></span>
                 <div class="topicItemTitle">{{item.title}}</div>
                 <div class="topicItemSubtitle">{{item.subtitle}}</div>
                 <div class="topicItemPrice">{{item.price_info}}元起</div>
@@ -13,15 +13,10 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-    import {foots} from '@/components'
+    import { mapState } from 'vuex'
+    import { foots } from '@/components'
 
     export default {
-        data() {
-            return {
-               
-            }
-        },
         components:{
             foots
         },
@@ -56,9 +51,12 @@
     color: #000;
     cursor: pointer;
 }
-.topicItem>img{
+.topicItem>span{
+    display: inline-block;
     width: 100%;
     height: 2rem;
+    background-size: 100%;
+    background-position: center center;
 }
 .topicItemTitle{
     font-size: .14rem;
@@ -67,6 +65,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-top: .1rem;
 }
 .topicItemSubtitle{
     padding: .05rem .1rem;

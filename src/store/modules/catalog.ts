@@ -5,12 +5,10 @@ export default {
     state: {
         categorysArr: [],
         renderArr: [],
+        renderList:[],
         arr:[]
     },
     mutations: {
-        setCate(state: any,payload: any){
-            state.categorysArr = payload
-        },
         setRend(state:any,payload: any){
             state.renderArr = payload
         },
@@ -21,7 +19,7 @@ export default {
             console.log(state.arr)
         },
         setGood(state:any,payload:any){
-            state.renderArr=payload.data
+            state.renderList=payload.data
         }
     },
     actions: {
@@ -34,11 +32,10 @@ export default {
             let result = await categorys()
             // console.log(result.data, '---result进入页面')
             commit('setCate', { data: result.data, id })
-            commit('setCate',result.data.categoryList)
         },
         async getGood({ commit }: any,payload:any) {
             let result = await goodList(payload)
-            // console.log(result.data, '---result进入页面')
+            console.log(result.data, '---result进入页面')
             commit('setGood', result.data)
         }
     }

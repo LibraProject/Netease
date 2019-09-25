@@ -30,7 +30,7 @@ export default {
       ptitle: "品牌制造商直供",
       newpin: "新品首发",
       Preole: "人气推荐",
-      zhuanti:'专题精选'
+      zhuanti:'专题精选',
     };
   },
   computed: {},
