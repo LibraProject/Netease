@@ -60,7 +60,7 @@ const router=new Router({
       component: ()=>import('../views/goods/index.vue')
     },
     {
-      name: '制造商详情',
+      name: 'brandDetail',
       path: '/brandDetail/:id',
       // isTab: false,
       component: ()=>import('../views/brandDetail/index.vue')

@@ -1,6 +1,6 @@
 <template>
     <div class="brandWrap">
-      <div class="brandItem" v-for="ele in brandList" :key="ele.name">
+      <div class="brandItem" v-for="ele in brandList" :key="ele.name" @click="clickme(ele.id)">
         <div class="brandItemName">{{ele.name}}</div>
         <div class="brandItemMinPrice">{{ele.floor_price}}元起</div>
         <img v-lazy="ele.new_pic_url" alt />
@@ -11,26 +11,13 @@
 export default {
   name:"",
     props:['brandList'],
-    components:{
-
-    },
-    data(){
-        return {
-
-        }
-    },
-    computed:{
-
-    },
     methods:{
-
+      clickme(id){
+        console.log(id)
+        this.$router.push({name:"brandDetail",params:{id}})
+      }
     },
-    created(){
-
-    },
-    mounted(){
-
-    }
+   
 }
 </script>
 <style scoped lang="scss">
