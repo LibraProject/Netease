@@ -18,16 +18,9 @@ export default {
             console.log(state.arr)
         },
         setGood(state:any,payload:any){
-<<<<<<< HEAD
-            state.renderArr=payload.data
-        },
-            // 获取品牌数据
-        setBrand(){
-
-=======
             state.renderList=payload.data
->>>>>>> 59f298ca7b283a2e07e71d00d1020f8ea5b15c6d
-        }
+        },
+       
     },
     actions: {
         async category({commit}: any,id:any){
@@ -40,10 +33,7 @@ export default {
         },
         async getGood({ commit }: any,payload:any) {
             let result = await goodList(payload)
-<<<<<<< HEAD
-=======
             console.log(result.data, '---result进入页面')
->>>>>>> 59f298ca7b283a2e07e71d00d1020f8ea5b15c6d
             commit('setGood', result.data)
         }
     }
