@@ -12,3 +12,9 @@ export let category = (id: any)=>{
      // console.log(id)
      return request.get(`/catalog/current?id=${id}`)
 }
+
+// 每一项对应的内容
+export let goodList = (params:any)=>{
+     // console.log(id)
+     return request.get('/goods/list',{params})
+}
