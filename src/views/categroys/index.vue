@@ -13,27 +13,17 @@
                 >{{ele.name}}</span>
             </div>
         </div>
-        <!-- <div class="categoryDetail" v-for="item in arr" :key="item.id">
+        <div class="categoryDetail" v-for="item in arr" :key="item.id">
             <div>{{item.name}}</div>
             <div>{{item.front_name}}</div>
-<<<<<<< HEAD
-        </div> -->
-        <!-- <newGood :newGoodList="renderArr"></newGood> -->
-        <bscrolls/>
-=======
         </div>
         <cateGoryGoods :goodsList="renderList"></cateGoryGoods>
->>>>>>> 59f298ca7b283a2e07e71d00d1020f8ea5b15c6d
     </div>
   </div>
 </template>
 
 <script>
-<<<<<<< HEAD
-import { headers, newGood, bscrolls } from "@/components";
-=======
-import { headers, cateGoryGoods } from "@/components";
->>>>>>> 59f298ca7b283a2e07e71d00d1020f8ea5b15c6d
+import { headers, newGood, bscrolls ,cateGoryGoods} from "@/components";
 import { mapActions, mapState } from "vuex";
 import BScroll from 'better-scroll'
 
@@ -49,12 +39,8 @@ export default {
   },
   components: { 
     headers,
-<<<<<<< HEAD
-    newGood,
-    bscrolls
-=======
+    bscrolls,
     cateGoryGoods
->>>>>>> 59f298ca7b283a2e07e71d00d1020f8ea5b15c6d
   },
   computed: {
       ...mapState({
