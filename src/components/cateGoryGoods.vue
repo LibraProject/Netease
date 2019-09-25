@@ -84,7 +84,5 @@
 .cateGoryItemss {
   border-bottom: 0;
 }
-// .cateGoryItem:nth-child(odd) {
-//   border-right: 0;
-// }
+
 </style>

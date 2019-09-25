@@ -20,7 +20,6 @@ export default {
         setGood(state:any,payload:any){
             state.renderList=payload.data
         },
-       
     },
     actions: {
         async category({commit}: any,id:any){
