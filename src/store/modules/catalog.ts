@@ -1,4 +1,4 @@
-import { categorys, category, goodList } from '../../service'
+import { categorys, category, goodList, branddetail } from '../../service'
 
 export default {
     namespaced: true,
@@ -8,20 +8,20 @@ export default {
         arr:[]
     },
     mutations: {
-        setCate(state: any,payload: any){
-            state.categorysArr = payload
-        },
         setRend(state:any,payload: any){
             state.renderArr = payload
         },
         setCate(state: any, payload: any) {
-            // console.log(payload)
             state.categorysArr = payload.data.categoryList
             state.arr=payload.data.categoryList.filter((item:any)=>item.id===payload.id)
             console.log(state.arr)
         },
         setGood(state:any,payload:any){
             state.renderArr=payload.data
+        },
+            // 获取品牌数据
+        setBrand(){
+
         }
     },
     actions: {
@@ -30,15 +30,11 @@ export default {
              commit('setRend',result.data.currentCategory.subCategoryList)
         },
         async categorys({ commit }: any, id: any) {
-            // console.log(id, '进入页面')
             let result = await categorys()
-            // console.log(result.data, '---result进入页面')
             commit('setCate', { data: result.data, id })
-            commit('setCate',result.data.categoryList)
         },
         async getGood({ commit }: any,payload:any) {
             let result = await goodList(payload)
-            // console.log(result.data, '---result进入页面')
             commit('setGood', result.data)
         }
     }

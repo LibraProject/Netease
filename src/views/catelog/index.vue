@@ -2,17 +2,17 @@
   <div class="wrap">
     <headers :txt="txt" />
     <div class="main">
-      <div class="cateR">
+      <div class="cateR" v-if="categorysArr.length">
         <ul>
           <li v-for="(item,index) in categorysArr" :class="{lactive:ind==index}" @click="clickme(item.id,index)" :key="item.id" >{{item.name}}</li>
         </ul>
       </div>
       <div class="cateL">
           <div class="cateBaner">
-            <img v-lazy="categorysArr[ind].wap_banner_url" alt="">
+            <img v-if="categorysArr[ind].wap_banner_url" v-lazy="categorysArr[ind].wap_banner_url" alt="">
           </div>
           <div class="catetitle">——&emsp;{{categorysArr[ind].name}}&emsp;——</div>
-          <div class="heng">
+          <div class="heng" v-if="renderArr.length">
               <div class="newGoodsItem" v-for="element in renderArr" :key="element.id" @click="goCateDetail(element.id)">
                 <img :src="element.wap_banner_url" alt="">
                 <p>{{element.name}}</p>

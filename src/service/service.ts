@@ -18,3 +18,8 @@ export let goodList = (params:any)=>{
      // console.log(id)
      return request.get('/goods/list',{params})
 }
+
+//  获取品种商
+export let branddetail = (id:any)=>{
+     return request.get(`/brand/detail?id=${id}`)
+}

@@ -15,7 +15,8 @@ import { headers } from '@/components'
         },
         components:{headers},
         created(){
-            console.log(this.$route)
+            let {di,name} = this.$route.params
+            this.title = name;
         }
     }
 </script>
