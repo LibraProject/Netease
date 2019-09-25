@@ -5,10 +5,10 @@
         </div>
         <div class="loginMain">
           <div class="inputWrap onePx_bottom">
-            <input type="text" v-model="mobile" placeholder="请输入手机号码" @change="telphone"/>
+            <input type="text" v-model="mobile"  placeholder="请输入手机号码15323807318" @change="telphone"/>
           </div>
           <div class="inputWrap onePx_bottom">
-            <input type="password" v-model="password" placeholder="请输入登录密码" @change="passChange" />
+            <input type="password" v-model="password" placeholder="请输入登录密码123456" @change="passChange" />
           </div>
           <div class="loginBtn">
             <button @click="submit">登录</button>

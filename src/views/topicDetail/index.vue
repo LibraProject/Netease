@@ -1,23 +1,39 @@
 <template>
     <div class="topicDetail">
-        <Header></Header>
+        <Header :txt="detailList.title"></Header>
         <main>
             <div class="topicDetailImg" v-html="detailList.content"></div>
 
             <div class="commentWrap">
                 <div class="titleLine">
                     <span>精选留言</span>
-                    <span>!</span>
+                    <router-link :to="`/topicCommentWrite/${detailList.id}`">
+                        <svg t="1569315726252" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5029" width="12" height="12"><path d="M990.88 347.12a32.456 32.456 0 0 0-32.456 32.448v524.488c0 30.36-24.72 55.048-55.08 55.048H120.616a55.104 55.104 0 0 1-55.04-55.048v-784.08c0-30.36 24.688-55.08 55.04-55.08H643.76a32.456 32.456 0 0 0 0-64.896H120.616C54.488 0 0.672 53.84 0.672 119.976v784.08C0.672 970.2 54.48 1024 120.616 1024h782.736c66.168 0 119.976-53.808 119.976-119.944V379.568a32.448 32.448 0 0 0-32.448-32.448z" fill="#838384" p-id="5030"></path><path d="M219.584 784.968a32.344 32.344 0 0 0 22.944 9.504 32.344 32.344 0 0 0 22.944-9.504L988.848 61.6a32.44 32.44 0 1 0-45.88-45.88L219.584 739.088a32.424 32.424 0 0 0 0 45.88z" fill="#838384" p-id="5031"></path></svg>
+                    </router-link>
                 </div>
-                <div class="commentList">
-                    <div class="commentItem">
+
+                <div v-if="commitDate.length===0" class="noComment">
+                    <img src="@/static/img/comment.png" alt="">
+                    <span>等你来消息</span>
+                </div>
+
+                <div v-else class="commentList">                   
+                    <div class="commentItem" v-for="item in commitDate" :key="item.id">
                         <div class="userInfo">
-                            <span>匿名用户</span>
-                            <span>2017-05-15 10:06:01</span>
+                            <span>{{item.user_info.username}}</span>
+                            <span>{{item.add_time}}</span>
                         </div>
-                        <div class="userComment">是记忆棉 很满意</div>
+                        <div class="userComment">{{item.content}}</div>
                     </div>
                     <router-link class="moreComment" :to="`/comment/${314}`">查看更多评论</router-link>
+                </div>
+            </div>
+
+            <div class="relateTopic">
+                <div class="relateTopicTitle">推荐专题</div>
+                <div class="relateTopicItem" v-for="item in relatedList" :key="item.id" @click="relateDetail(item.id)">
+                    <img :src="item.scene_pic_url" alt="">
+                    <div>{{item.title}}</div>
                 </div>
             </div>
         </main>
@@ -31,7 +47,7 @@
     export default {
         data() {
             return {
-               id:''
+               id:'',
             }
         },
         components:{
@@ -40,18 +56,27 @@
         computed:{
             ...mapState({
                 detailList:state=>state.topic.detailList,
+                commitDate:state=>state.topic.commitDate,
+                relatedList:state=>state.topic.relatedList
             })
         },
         mounted() {
             this.getlist()
+            this.$store.dispatch('topic/getCommitList')
+            this.$store.dispatch('topic/getrelated')
         },
         methods: {
             getlist(){
                 this.$store.dispatch('topic/getTopicDetail' ,{
                     id:this.$route.params.id
                 })
+            },
+            relateDetail(id){
+                this.$router.history.push(`/topicDetail/${id}`)
+                this.$router.go(0)
+                
             }
-        }
+        },
     }
 </script>
 
@@ -149,4 +174,41 @@ main{
     color: #000;
 }
 
+.noComment{
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img{
+        padding: .1rem;
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+}
+
+.relateTopic{
+    margin-top: .1rem;
+    padding: 0 .1rem;
+    background-color: #eeeeee;
+    .relateTopicTitle{
+        line-height: .4rem;
+        text-align: center;
+    }
+    .relateTopicItem{
+        background: white;
+        padding: .1rem .1rem 0 .1rem;
+        margin-bottom: .1rem;
+        display: block;
+        img{
+            width: 100%;
+            height: 2rem;
+        }
+        div{
+            line-height: .5rem;
+            color: gray;
+            font-size: .14rem;
+        }
+    }
+}
 </style>

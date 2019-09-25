@@ -1,29 +1,26 @@
 <template>
-    <div class="Ptlist">
-      <div class="Ptlists" v-for="item in channel" :key="item.id">
-        <img :src="item.icon_url" alt />
-        <p>{{item.name}}</p>
-      </div>
+  <div class="Ptlist">
+    <div class="Ptlists" v-for="item in channel" :key="item.id" @click="goCateGroys(item.id)">
+      <img :src="item.icon_url" alt />
+      <p>{{item.name}}</p>
     </div>
+  </div>
 </template>
 <script>
 export default {
-  props:['channel'],
-  components: {
-   
-  },
+  props: ["channel"],
+  components: {},
   data() {
-    return {
-      
-    };
+    return {};
   },
   computed: {},
   methods: {
-    
+    goCateGroys(id){
+      console.log(id)
+      this.$router.history.push({name:"分类商品",params:{id}})
+    }
   },
-  created() {
-    
-  },
+  created() {},
   mounted() {}
 };
 </script>
@@ -45,7 +42,6 @@ export default {
       padding: 0.06rem;
       margin: auto;
     }
-   
   }
 }
 </style>

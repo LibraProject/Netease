@@ -1,39 +1,32 @@
 <template>
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="item in banrlist" :key="item.id">
+    <swiper :options="swiperOption">
+      <swiper-slide v-for="item in banrlist" :key="item.id">
           <img class="Pices" :src="item.image_url" alt />
-        </div>
-      </div>
-      <div class="swiper-pagination" v-for="pages in banrlist.banner" :key="pages.content" >
-      </div>
-    </div>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
 </template>
 <script>
-import swiper from "swiper";
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+
 export default {
-  name:'swiper',
   props: ["banrlist"],
   components: {},
   data() {
     return {
-      list: {}
-    };
+      headper:'',
+      swiperOption: {
+          pagination: {
+            el: '.swiper-pagination'
+          }
+        }    
+      };
   },
-  computed: {},
-  methods: {},
-  created() {},
-  mounted() {
-    this.$nextTick(() => {
-      new swiper(".swiper-container", {
-        loop: true,
-        autoplay: true,
-        pagination: {
-          el: ".swiper-pagination"
-        }
-      });
-    });
-  }
+  components: {
+    swiper,
+    swiperSlide
+  },
 };
 </script>
 <style>
