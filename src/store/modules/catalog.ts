@@ -12,11 +12,10 @@ export default {
         }
     },
     actions: {
-       async categorys({commit}:any,id:any){
-        console.log(id,'进入页面')
+       async categorys({commit}:any){
         let result = await categorys()
-        console.log(result.data,'---result进入页面')
-        commit('setCate',result.data.categoryList)
+        console.log(result)
+        commit('setCate',result.data)
        }
     }
 }

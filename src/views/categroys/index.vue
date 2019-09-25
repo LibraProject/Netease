@@ -34,11 +34,7 @@ export default {
   components: { headers },
   computed: {
       ...mapState('catalog',['categorysArr']),
-    // setWidth(){
-    //     let elements = this.$refs.SItem.children;
-    //     let w = elements.length * elements[0].offsetwidth;
-
-    // }
+   
   },
   methods: {
     ...mapActions("catalog", ["categorys",'categorysList']),
@@ -47,43 +43,22 @@ export default {
         this.id=id
         this.categorysList(id)
     }
-    // setWidth(){
-    //    this.$refs.SItem.style.width = this.element.length*this.element[0].offsetWidth +'px'
-    //    let arr = Array.from(this.element)
-    //    console.log(arr)
-    //    console.log(this.element)
-    //    new Bscroll('.cateBox',{
-    //        scrollX:true,
-    //        click:true
-    //    })
-    // }
+ 
   },
   created() {
     console.log(this.categorysArr)
-    // console.log(this.$route.params)
     let {id} = this.$route.params;
     console.log(id)
      this.categorys(id);
   },
   mounted(){
-    //   this.$nextTick(()=>{
-    //        this.element = this.$refs.SItem.children;
-    //         this.setWidth() 
-
-    //   })
-       
   }
 };
 </script>
 
 <style lang="scss" scoped>
-<<<<<<< HEAD
-.wrap {
-  width: 100%;
-=======
 .wrap{
       width: 100%;
->>>>>>> lhy
   height: 100%;
   font-size: 0.14rem;
   overflow: hidden;
@@ -91,34 +66,6 @@ export default {
   display: flex;
   flex-direction: column;
   padding-top: 0.5rem;
-<<<<<<< HEAD
-}
-.cateBox{
-    width: 100%;
-    height: .45rem;
-    overflow: hidden;
-    .catd{
-        display: flex;
-        width: 100%;
-        height: 100%;
-        overflow-x: scroll;
-        span{
-            width: 20%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 20%;
-            flex-shrink: 0;
-        }
-    }
-}
-.cative{
-    color: skyblue;
-    border-bottom: 1px solid skyblue;
-}
-</style>
-=======
 
 }
 </style>
->>>>>>> lhy

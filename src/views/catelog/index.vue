@@ -35,6 +35,7 @@ export default {
   },
   created() {
     this.categorys();
+    console.log(this.categorysArr)
   }
 };
 </script>
@@ -52,7 +53,7 @@ export default {
   display: flex;
   width: 100%;
   height: 100%;
-  // overflow: hidden;
+  overflow: hidden;
   .cateR {
     width: 25%;
     position: relative;
@@ -69,26 +70,6 @@ export default {
       .lactive {
         border-left: 1px solid rgb(103, 192, 228);
       }
-
-      // .lactive::before {
-      //     content: "";
-      //     position: absolute;
-      //     top: 0;
-      //     left: 0%;
-      //     width: 0;
-      //     height: .45rem;
-      //     border-left: 2px solid rgb(103, 192, 228);
-      //     transition: 0.2s all linear;
-      // }
-
-      // .lactive:active {
-      //     background: rgb(103, 192, 228);
-      //     color: #fff;
-      // }
-
-      // .active~.lactive::before {
-      //     left: 0;
-      // }
     }
   }
 }
