@@ -9,5 +9,6 @@ module.exports =  {
      foots:()=>import('./footers.vue'),
      seamless:()=>import('./seamless.vue'),
      shoplist:()=>import('./shoplist.vue'),
-     headers:()=>import('./header.vue')
+     headers:()=>import('./header.vue'),
+     bscrolls:()=>import('./bettScroll.vue')
 }

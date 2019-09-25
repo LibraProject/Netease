@@ -3,7 +3,7 @@
     <headers :txt="txt" />
     <div class="cateBox">
         <div class="catd" ref="catd">
-            <div class="content">
+            <div class="content" ref="catdList">
                 <span 
                   v-for="(ele,index) in categorysArr" 
                   :class="{cative:id==ele.id}" 
@@ -13,17 +13,18 @@
                 >{{ele.name}}</span>
             </div>
         </div>
-        <div class="categoryDetail" v-for="item in arr" :key="item.id">
+        <!-- <div class="categoryDetail" v-for="item in arr" :key="item.id">
             <div>{{item.name}}</div>
             <div>{{item.front_name}}</div>
-        </div>
-        <newGood :newGoodList="renderArr"></newGood>
+        </div> -->
+        <!-- <newGood :newGoodList="renderArr"></newGood> -->
+        <bscrolls/>
     </div>
   </div>
 </template>
 
 <script>
-import { headers, newGood } from "@/components";
+import { headers, newGood, bscrolls } from "@/components";
 import { mapActions, mapState } from "vuex";
 import BScroll from 'better-scroll'
 
@@ -39,7 +40,8 @@ export default {
   },
   components: { 
     headers,
-    newGood
+    newGood,
+    bscrolls
   },
   computed: {
       ...mapState({
@@ -65,14 +67,15 @@ export default {
           scrollX: true,
           eventPassthrough: 'vertical'
       });
-
       this.getGood({ categoryId: this.id, page: 1, size: 1000 })
-      
+      this.$nextTick(()=>{
+        let elements = this.$refs.catdList.children;
+        console.log([...elements])
+      })
   },
   watch: {
       id(id){
         let target=this.$refs[id];//点击的每一项
-        // console.log(target);
         this.scroll.scrollToElement(target[0],500);
       }
   },
@@ -93,8 +96,10 @@ export default {
 .cateBox{
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow:hidden;
     background-color: #f5f5f9;
+    display: flex;
+    flex-direction: column;
     .catd{
         width: 100%;
         height: .45rem;
