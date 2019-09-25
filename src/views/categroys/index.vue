@@ -77,8 +77,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+<<<<<<< HEAD
 .wrap {
   width: 100%;
+=======
+.wrap{
+      width: 100%;
+>>>>>>> lhy
   height: 100%;
   font-size: 0.14rem;
   overflow: hidden;
@@ -86,6 +91,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding-top: 0.5rem;
+<<<<<<< HEAD
 }
 .cateBox{
     width: 100%;
@@ -111,3 +117,8 @@ export default {
     border-bottom: 1px solid skyblue;
 }
 </style>
+=======
+
+}
+</style>
+>>>>>>> lhy

@@ -20,8 +20,6 @@ export default {
       this.$router.push({name:"分类商品",params:{id}})
     }
   },
-  created() {},
-  mounted() {}
 };
 </script>
 <style scoped lang="scss">
