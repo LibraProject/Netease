@@ -1,7 +1,9 @@
 <template>
   <div class="wrap">
       <div class="main">
-        <swiper :banrlist="list.banner" />
+        <div class="Pices">
+            <swiper :banrlist="list.banner" :flag="true"/>
+        </div>
         <ptlist :channel="list.channel" />
         <ptitles :title="ptitle" />
         <branwrap :brandList="list.brandList" />
@@ -63,5 +65,6 @@ export default {
 .main{
     flex: 1;
     overflow-y: scroll;
+    background: #f5f5f9;
 }
 </style>

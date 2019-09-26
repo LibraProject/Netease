@@ -36,7 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    z-index: 3;
     font-size: .14rem;
     span:not(:nth-of-type(2)){
         flex: 2;

@@ -1,5 +1,5 @@
 module.exports =  {
-    swiper:()=>import('./swiper.vue'),
+     swiper:()=>import('./swiper.vue'),
      ptlist :()=>import( "./Ptlist.vue"),
      ptitles :()=>import( "./title.vue"),
      branwrap :()=>import( "./branwrap.vue"),
@@ -12,5 +12,6 @@ module.exports =  {
      headers:()=>import('./header.vue'),
      bscrolls:()=>import('./bettScroll.vue'),
      cateGoryGoods:()=>import('./cateGoryGoods.vue'),
-     empty:()=>import('./empty.vue')
+     empty:()=>import('./empty.vue'),
+     service:()=>import('./service.vue')
 }

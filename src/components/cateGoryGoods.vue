@@ -4,7 +4,7 @@
             :class="[{'clerbootom':index==goodsList.length-1},'cateGoryItem']"
             v-for="(item,index) in goodsList"
             :key="item.name"
-            @click="cateClick(item.id)"
+            @click="cateClick(item.id,item.name)"
         >
             <img v-lazy="item.list_pic_url" alt />
             <p>{{item.name}}</p>
@@ -30,8 +30,8 @@
           moreClick(id){
             this.$router.history.replace(`/categorys/${this.id}`)
           },
-          cateClick(id){
-            this.$router.history.replace(`/goods/${id}`)
+          cateClick(id,name){
+            this.$router.push({path:`/goods/${id}`,query:{text:name}})
           }
         },
     }

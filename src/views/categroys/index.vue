@@ -77,7 +77,9 @@ export default {
   },
   watch: {
       id(id){
+        console.log(id)
         let target=this.$refs[id];//点击的每一项
+        // console.log(target);
         this.scroll.scrollToElement(target[0],500);
       }
       
@@ -99,7 +101,7 @@ export default {
 .cateBox{
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
     background-color: #f5f5f9;
     .catd{
         width: 100%;
