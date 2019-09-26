@@ -10,7 +10,7 @@
             <p>{{item.name}}</p>
             <p class="catePrice">￥ {{item.retail_price}}</p>
         </div>
-        <div class="cateGoryItem cateGoryItemss" @click="moreClick">
+        <div v-if="flag" class="cateGoryItem cateGoryItemss" @click="moreClick">
             <p>更多 {{eleName}} 好物</p>
             <img src="/img/icon_go_more.png" alt />
         </div>
@@ -23,7 +23,8 @@
             goodsList:Array,
             eleName:String,
             shopArr:Array,
-            id:Number
+            id:Number,
+            flag:Boolean
         },
         methods: {
           moreClick(id){
@@ -84,5 +85,7 @@
 .cateGoryItemss {
   border-bottom: 0;
 }
-
+.catePrice{
+  color:red;
+}
 </style>

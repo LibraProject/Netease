@@ -14,7 +14,7 @@ export default {
     methods:{
       clickme(id,name){
         console.log(id,name)
-        this.$router.push({name:"brandDetail",params:{id,name}})
+        this.$router.push({name:"brandDetail",params:{id},query:{name}})
       }
     },
    

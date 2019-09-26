@@ -6,7 +6,8 @@ export default {
         categorysArr: [],
         renderArr: [],
         renderList:[],
-        arr:[]
+        arr:[],
+        brandArr:{}
     },
     mutations: {
         setRend(state:any,payload: any){
@@ -18,6 +19,9 @@ export default {
         setGood(state:any,payload:any){
             state.renderList=payload.data
         },
+        setBrand(state: any, payload: any){
+            state.brandArr = payload
+        }
     },
     actions: {
         async category({commit}: any,id:any){
@@ -31,6 +35,10 @@ export default {
         async getGood({ commit }: any,payload:any) {
             let result = await goodList(payload)
             commit('setGood', result.data)
+        },
+        async branddetail({commit}: any, id:any){
+            let result = await branddetail(id)
+            commit('setBrand', result.data.brand)
         }
     }
 }

@@ -11,5 +11,6 @@ module.exports =  {
      shoplist:()=>import('./shoplist.vue'),
      headers:()=>import('./header.vue'),
      bscrolls:()=>import('./bettScroll.vue'),
-     cateGoryGoods:()=>import('./cateGoryGoods.vue')
+     cateGoryGoods:()=>import('./cateGoryGoods.vue'),
+     empty:()=>import('./empty.vue')
 }

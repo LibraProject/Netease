@@ -19,7 +19,12 @@ export let goodList = (params:any)=>{
      return request.get('/goods/list',{params})
 }
 
-//  获取品种商
+//  获取品牌制造商
 export let branddetail = (id:any)=>{
      return request.get(`/brand/detail?id=${id}`)
+}
+
+// 获取制造商列表
+export let brandList = (obj?:any)=>{
+     return request.get('/goods/list',{params:obj})
 }
