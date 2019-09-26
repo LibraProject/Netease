@@ -5,15 +5,15 @@
         <div class="catd" ref="catd">
             <div class="content">
                 <span 
-                  v-for="(ele,index) in categorysArr" 
+                  v-for="(ele) in categorysArr" 
                   :class="{cative:id==ele.id}" 
-                  @click="setInd(index,ele.id)" 
+                  @click="setInd(ele.id,ele)" 
                   :key="ele.id"
                   :ref="ele.id"
                 >{{ele.name}}</span>
             </div>
         </div>
-        <bscrolls :goodsList="renderList"></bscrolls>
+        <bscrolls :goodsList="renderList" :msgName="obj"></bscrolls>
     </div>
   </div>
 </template>
@@ -29,6 +29,11 @@ export default {
       id:'1005000',
       element:[],
       scroll:null,
+      obj:{
+        name:'',
+        frontName:''
+      },
+      ind:0
     };
   },
   components: { 
@@ -44,30 +49,38 @@ export default {
   },
   methods: {
     ...mapActions("catalog", ["categorys","getGood"]),
-    setInd(ind,id){
+    setInd(id,ele){
+        this.obj.name = ele.name
+        this.obj.frontName = ele.front_name
         this.id=id
         this.categorys(id);
         this.getGood({ categoryId: this.id, page: 1, size: 1000 })
     }
   },
   mounted(){
-      this.id=this.$route.params.id
-      this.categorys(this.id);
-      this.scroll = new BScroll(this.$refs.catd, {
-          click: document.body.width > 768 ? false : true,
-          scrollX: true,
-          eventPassthrough: 'vertical'
-      });
-      this.getGood({ categoryId: this.id, page: 1, size: 1000 })
-      
+      this.$nextTick(()=>{
+          this.id=this.$route.params.id;
+            this.categorys(this.id);
+            this.scroll = new BScroll(this.$refs.catd, {
+                click: document.body.width > 768 ? false : true,
+                scrollX: true,
+                eventPassthrough: 'vertical'
+            });
+          this.getGood({ categoryId: this.id, page: 1, size: 1000 })
+      })
+  },
+  created(){
+      this.id=this.$route.params.id;
+      let index = this.categorysArr.findIndex((el)=>el.id==this.id);
+      this.obj.name = this.categorysArr[index].name
+      this.obj.frontName = this.categorysArr[index].front_name
   },
   watch: {
       id(id){
-        console.log(id)
         let target=this.$refs[id];//点击的每一项
-        // console.log(target);
         this.scroll.scrollToElement(target[0],500);
       }
+      
   },
 };
 </script>
@@ -94,6 +107,7 @@ export default {
         overflow: hidden;
         background-color: #fff;
         position: absolute;
+        z-index: 5;
         .content{
           width: 6.75rem;
           height: 100%;

@@ -1,13 +1,14 @@
 <template>
   <div class="BScrollwrap">
     <div class="bscrollChild">
-          <div class="categoryDetail" v-for="item in arr" :key="item.id">
-            <div>{{item.name}}</div>
-            <div>{{item.front_name}}</div>
+          <div class="categoryDetail">
+            <div>{{msgName.name}}</div>
+            <div>{{msgName.frontName}}</div>
         </div>
-         <div
-            :class="[{'clerbootom':index==goodsList.length-1},'cateGoryItem']"
-            v-for="(item,index) in goodsList"
+        <div class="catebox">
+           <div
+            :class="[{'clerbootom':index==newArr.length-1},'cateGoryItem']"
+            v-for="(item,index) in newArr"
             :key="item.name"
             @click="cateClick(item.id)"
         >
@@ -15,6 +16,8 @@
             <p>{{item.name}}</p>
             <p class="catePrice">￥ {{item.retail_price}}</p>
         </div>
+        </div>
+        
       <p class="bsUp">{{msgUp}}</p>
       <p class="bsDown">{{msgDown}}</p>
     </div>
@@ -24,7 +27,7 @@
 import BScroll from "better-scroll";
 import { mapActions, mapState } from "vuex";
 export default {
-  props: ['goodsList'],
+  props: ['goodsList','msgName'],
   components: {},
   data() {
     return {
@@ -41,7 +44,8 @@ export default {
         downEnd: "上拉加载..."
       },
       msgUp: "下拉刷新...",
-      msgDown: "上拉加载..."
+      msgDown: "上拉加载...",
+      newArr:[]
     };
   },
   computed: {
@@ -51,30 +55,54 @@ export default {
     scrollUp(e) {
       let maxH = Math.abs(this.Bs.maxScrollY),
         h = Math.abs(e.y);
-      if (h - maxH > 50) {
+        // console.log(maxH,'最大高度',h,'当前高度')
+      if (h > maxH + 100) {
         this.isFlag = true;
         this.msgDown = this.BsDate.down;
       } else {
-        this.isFlag = false;
+        this.isFlag = false
         this.msgDown = this.BsDate.downEnd;
       }
       if (e.y > 50) {
         this.msgUp = this.BsDate.up;
         this.isloading = true;
+      }else{
+        this.msgUp = this.BsDate.upend;
       }
+     
     },
     scrollEnd(e) {
+       let maxH = Math.abs(this.Bs.maxScrollY),
+        h = Math.abs(e.y);
+        console.log(maxH,'最大高度',h,'当前高度')
+
       if (this.isFlag) {
         // 上拉加载
-        this.num += 30;
       }
       if (this.isloading) {
+        
         // 下拉刷新
-        location.reload();
+        // location.reload();
       }
+    },
+    // setArr(){
+    //   console.log(this.goodsList.length)
+    //   this.newArr.concat(this.goodsList.slice((this.page-1)*this.limit,this.page*this.limit))
+    // }
+
+  },
+  created() {
+    this.newArr = this.goodsList.slice((this.page-1)*this.limit,this.page*this.limit)
+    
+  },
+  watch:{
+    newArr(newArr){
+      this.Bs.refresh();
+    },
+    goodsList(goodsList){
+      this.newArr = this.goodsList.slice((this.page-1)*this.limit,this.page*this.limit)
     }
   },
-  created() {},
   mounted() {
     this.$nextTick(() => {
       if (!this.Bs) {
@@ -94,14 +122,15 @@ export default {
         this.Bs.refresh();
       }
     });
+    this.Bs.refresh();
   }
 };
 </script>
-<style  lang="scss">
+<style scoped lang="scss">
 .BScrollwrap {
   flex: 1;
   height: 100%;
-  margin-top: .50rem;
+  margin-top: .45rem;
   overflow: hidden;
   .bscrollChild {
     width: 100%;
@@ -111,7 +140,7 @@ export default {
     position: relative;
     .categoryDetail{
     padding: .1rem 0;
-    margin-top: .4rem;
+    // margin-top: .4rem;
     div:nth-of-type(1){
       height: .3rem;
       line-height: .3rem;
@@ -161,7 +190,10 @@ export default {
       display: flex;
       flex-wrap: wrap;
     }
-    .cateGoryItem {
+    .catebox{
+      display:flex;
+      flex-wrap: wrap;
+      .cateGoryItem {
       width: 50%;
       text-align: center;
       box-sizing: border-box;
@@ -183,6 +215,8 @@ export default {
 
       overflow: hidden;
     }
+    }
+    
     .cateGoryItemss {
       display: flex;
       flex-direction: column;

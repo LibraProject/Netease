@@ -24,7 +24,7 @@
     }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .head{
     position: fixed;
     top: 0;

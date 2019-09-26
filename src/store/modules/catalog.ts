@@ -13,9 +13,7 @@ export default {
             state.renderArr = payload
         },
         setCate(state: any, payload: any) {
-            state.categorysArr = payload.data.categoryList
-            state.arr=payload.data.categoryList.filter((item:any)=>item.id===payload.id)
-            console.log(state.arr)
+            state.categorysArr = payload.data.categoryList;
         },
         setGood(state:any,payload:any){
             state.renderList=payload.data
@@ -32,7 +30,6 @@ export default {
         },
         async getGood({ commit }: any,payload:any) {
             let result = await goodList(payload)
-            console.log(result.data, '---result进入页面')
             commit('setGood', result.data)
         }
     }

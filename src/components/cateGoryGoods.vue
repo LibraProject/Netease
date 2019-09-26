@@ -36,7 +36,7 @@
     }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .cateWrap{
   display: flex;
   flex-wrap: wrap;
