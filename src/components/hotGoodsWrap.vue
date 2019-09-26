@@ -1,7 +1,7 @@
 <template>
     <div class="hotGoodsWrap">
         <div class="hotGoodsItem" v-for="ele in hotGoods" :key="ele.id">
-            <img :src="ele.list_pic_url" alt="">
+            <img v-lazy="ele.list_pic_url" alt="">
             <div class="hotGoodsInfos">
                 <div>{{ele.name}}</div>
                 <div class="hotcolor">{{ele.goods_brief}}</div>

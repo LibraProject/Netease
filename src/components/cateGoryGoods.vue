@@ -4,13 +4,13 @@
             :class="[{'clerbootom':index==goodsList.length-1},'cateGoryItem']"
             v-for="(item,index) in goodsList"
             :key="item.name"
-            @click="cateClick(item.id)"
+            @click="cateClick(item.id,item.name)"
         >
             <img v-lazy="item.list_pic_url" alt />
             <p>{{item.name}}</p>
             <p class="catePrice">￥ {{item.retail_price}}</p>
         </div>
-        <div class="cateGoryItem cateGoryItemss" @click="moreClick">
+        <div v-if="flag" class="cateGoryItem cateGoryItemss" @click="moreClick">
             <p>更多 {{eleName}} 好物</p>
             <img src="/img/icon_go_more.png" alt />
         </div>
@@ -23,14 +23,15 @@
             goodsList:Array,
             eleName:String,
             shopArr:Array,
-            id:Number
+            id:Number,
+            flag:Boolean
         },
         methods: {
           moreClick(id){
             this.$router.history.replace(`/categorys/${this.id}`)
           },
-          cateClick(id){
-            this.$router.history.replace(`/goods/${id}`)
+          cateClick(id,name){
+            this.$router.push({path:`/goods/${id}`,query:{text:name}})
           }
         },
     }
@@ -83,6 +84,9 @@
 }
 .cateGoryItemss {
   border-bottom: 0;
+}
+.catePrice{
+  color: red;
 }
 // .cateGoryItem:nth-child(odd) {
 //   border-right: 0;

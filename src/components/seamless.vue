@@ -42,10 +42,12 @@ export default {
 <style scoped lang="scss">
 .seamless {
   background: white;
+  height: 2.5rem;
 }
 .swiper-slide {
   box-sizing: border-box;
   padding: 0.1rem;
+  height: 2rem;
 }
 .topGoodSubTitle {
   margin-top: 0.1rem;

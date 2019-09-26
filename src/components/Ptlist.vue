@@ -17,7 +17,7 @@ export default {
   methods: {
     goCateGroys(id){
       // console.log(id)
-      this.$router.push({name:"分类商品",params:{id}})
+      this.$router.history.replace(`/categorys/${this.id}`)
     }
   },
 };

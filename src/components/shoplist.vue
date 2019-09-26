@@ -3,7 +3,7 @@
     <div class="cateGoryBox" v-for="ele in shopArr" :key="ele.name">
       <div class="cateGoryName">{{ele.name}}</div>
 
-      <cateGory :goodsList="ele.goodsList" :id="ele.id" :eleName="ele.name"></cateGory>
+      <cateGory :goodsList="ele.goodsList" :flag="true" :id="ele.id" :eleName="ele.name"></cateGory>
       
     </div>
   </div>
