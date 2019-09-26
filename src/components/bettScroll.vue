@@ -31,23 +31,20 @@ export default {
   props:{
     goodsList:Array,
     msgName:Object,
-     list: {
-      query:{
-        key:String
-      },
-      limit: Number, 
-      count: Number,
-      refreshDispatch: String,
-      loadMoreDispatch: String,
-      value: Array
-    }
+    page:1,
+    limit:10,
+    upfn:Function,
+    down:Function,
+    value:Array,
+    currentLength:Number
+     
   },
   components: {},
   data() {
     return {
       Bs: "",
-      isFlag: false, // 下拉
-      isloading: false, // 上拉
+      isFlag: false, 
+      isloading: false, 
       page: 1,
       limit: 10,
       num: 30,

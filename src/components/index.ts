@@ -13,5 +13,6 @@ module.exports =  {
      bscrolls:()=>import('./bettScroll.vue'),
      cateGoryGoods:()=>import('./cateGoryGoods.vue'),
      empty:()=>import('./empty.vue'),
-     service:()=>import('./service.vue')
+     service:()=>import('./service.vue'),
+     scroll:()=>import('./scroll.vue')
 }
