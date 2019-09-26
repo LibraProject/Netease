@@ -46,7 +46,7 @@ export default {
       this.category(id)
     },
     goCateDetail(id){
-      console.log(id)
+       this.$router.push({name:'categorys',params:{id}})
     }
   },
   created() {

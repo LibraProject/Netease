@@ -69,7 +69,7 @@ export default {
     }
   },
   mounted(){
-      this.$nextTick(()=>{
+    
             this.categorys(this.id);
             this.scroll = new BScroll(this.$refs.catd, {
                 click: document.body.width > 768 ? false : true,
@@ -77,7 +77,7 @@ export default {
                 eventPassthrough: 'vertical'
             });
           this.getGood({ categoryId: this.id, page: 1, size: 1000 })
-      })
+  
   },
   created(){
     this.id=this.$route.params.id;
@@ -86,6 +86,9 @@ export default {
   watch: {
       id(id){
         let target=this.$refs[id];//点击的每一项
+        console.log(this.scroll)
+        console.log(target)
+        console.log(this.$refs)
         this.scroll.scrollToElement(target[0],500);
       }
   },

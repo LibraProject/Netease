@@ -16,7 +16,6 @@
         <seamless :topicList="list.topicList"/>
         <shoplist :shopArr="list.categoryList"/>
       </div>
-    
     <foots/>
   </div>
 </template>

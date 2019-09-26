@@ -26,8 +26,22 @@
 <script>
 import BScroll from "better-scroll";
 import { mapActions, mapState } from "vuex";
+import { goodList } from '../service';
 export default {
-  props: ['goodsList','msgName'],
+  props:{
+    goodsList:Array,
+    msgName:Object,
+     list: {
+      query:{
+        key:String
+      },
+      limit: Number, 
+      count: Number,
+      refreshDispatch: String,
+      loadMoreDispatch: String,
+      value: Array
+    }
+  },
   components: {},
   data() {
     return {
@@ -67,7 +81,7 @@ export default {
         this.msgUp = this.BsDate.up;
         this.isloading = true;
       }else{
-        this.msgUp = this.BsDate.upend;
+        this.msgUp = this.BsDate.upend;4
       }
      
     },
@@ -83,6 +97,9 @@ export default {
         location.reload();
       }
     },
+    cateClick(a,b){
+      console.log(a,b)
+    }
   },
   created() {
     this.newArr = this.goodsList.slice((this.page-1)*this.limit,this.page*this.limit)
@@ -94,7 +111,7 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(() => {
+    this.$nextTick(() => {w2
       if (!this.Bs) {
         this.Bs = new BScroll(".BScrollwrap", {
           scrollY: true,
