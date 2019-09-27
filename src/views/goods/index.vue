@@ -145,7 +145,7 @@
                 goodsList:state=>state.good.goodsList,
                 img:state=>state.good.img,
                 numCar:state=>state.good.numCar,
-                productList:state=>state.good.productList
+                productList:state=>state.good.productList,
             })
         },
         mounted() {

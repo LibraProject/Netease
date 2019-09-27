@@ -5,15 +5,7 @@
 export default {
   props: {
     title: String
-  },
-  components: {},
-  data() {
-    return {};
-  },
-  computed: {},
-  methods: {},
-  created() {},
-  mounted() {}
+  }
 };
 </script>
 <style scoped>

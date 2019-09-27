@@ -5,7 +5,6 @@ module.exports =  {
      branwrap :()=>import( "./branwrap.vue"),
      newGood :()=>import( "./newGoodsBox.vue"),
      hotGoods :()=>import( "./hotGoodsWrap.vue"),
-     category :()=>import( './category.vue'),
      foots:()=>import('./footers.vue'),
      seamless:()=>import('./seamless.vue'),
      shoplist:()=>import('./shoplist.vue'),
@@ -14,5 +13,5 @@ module.exports =  {
      cateGoryGoods:()=>import('./cateGoryGoods.vue'),
      empty:()=>import('./empty.vue'),
      service:()=>import('./service.vue'),
-     scroll:()=>import('./scroll.vue')
+     commonScroll:()=>import('./commonScroll.vue')
 }

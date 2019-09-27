@@ -9,3 +9,8 @@ export let shopCar = () => {
 export let addShop = (params:object) => {
      return requerst.post("/cart/add",params);
 };
+
+// 删除购物车商品
+export let delShop = (params:object) => {
+     return requerst.post("/cart/delete",params);
+};

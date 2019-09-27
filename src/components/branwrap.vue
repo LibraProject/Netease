@@ -16,8 +16,7 @@ export default {
         console.log(id,name)
         this.$router.push({name:"brandDetail",params:{id},query:{name}})
       }
-    },
-   
+    }
 }
 </script>
 <style scoped lang="scss">

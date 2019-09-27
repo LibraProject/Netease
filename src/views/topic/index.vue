@@ -53,7 +53,6 @@
 }
 .topicItem{
     height: 2.9rem;
-    margin-top: .1rem;
     background: white;
     display: block;
     color: #000;

@@ -16,7 +16,7 @@ export default {
   computed: {},
   methods: {
     goCateGroys(id){
-      console.log(id)
+      // console.log(id)
       this.$router.push({name:'categorys',params:{id}})
     }
   },
