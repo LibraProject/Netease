@@ -3,9 +3,9 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const router=new Router({
+export default new Router({
   mode: 'history',
-  linkActiveClass:"routerActive",
+  base: process.env.BASE_URL,
   routes: [
     {
       path:'/',
@@ -48,7 +48,7 @@ const router=new Router({
       component: ()=>import('../views/mine/index.vue')
     },
     {
-      name: 'categorys',
+      name: '分类商品',
       path: '/categorys/:id',
       // isTab: false,
       component: ()=>import('../views/categroys/index.vue')
@@ -60,7 +60,7 @@ const router=new Router({
       component: ()=>import('../views/goods/index.vue')
     },
     {
-      name: 'brandDetail',
+      name: '制造商详情',
       path: '/brandDetail/:id',
       // isTab: false,
       component: ()=>import('../views/brandDetail/index.vue')
@@ -109,24 +109,3 @@ const router=new Router({
     }
   ]
 })
-
-router.beforeEach((to, from, next) => {
-    // console.log(to);
-    // console.log(from);
-    // next();
-    //我在这里模仿了一个获取用户信息的方法
-    let token = window.localStorage.getItem('token');
-    if (token) {
-        //如果用户信息存在则往下执行。
-        next()
-    } else {
-       //如果用户token不存在则跳转到login页面
-       if (to.path === '/login') {
-            next()
-        } else {
-            next('/login')
-        }
-    } 
-}) 
-
-export default router

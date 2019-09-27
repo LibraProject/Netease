@@ -1,13 +1,11 @@
 <template>
     <div class="cart">
         <service/>
-        
         <div v-if="cartList.length===0" class="noGoods">
             <img src="/img/noGoods.png" alt="">
             <p>去添加点什么吧~</p>
         </div>
-
-        <div v-else class="cartGoodsListWrap">
+        <div v-else-if="cartList.length" class="cartGoodsListWrap">
             <div class="cartGoodsItem" v-for="(ele,i) in cartList" :key="ele.id">
                 <div class="isCheckItem" @click="itemCheck(ele.checked,i)">
                     <img v-if="ele.checked" src="/img/isCheck.png" alt="">
@@ -29,29 +27,28 @@
                     <div class="cartEditNum">
                         <div>￥{{ele.retail_price}}</div>
                         <ol class="countOp">
-                            <li>-</li>
-                            <li>0</li>
-                            <li>+</li>
+                            <li @click="min(i)">-</li>
+                            <li>{{ele.number}}</li>
+                            <li @click="max(i)">+</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="cartGoodsDo">
             <div class="isCheckItem" @click="allClick">
-                <img v-if="IsAll()" src="/img/isCheck.png" alt="">
-                <img v-else src="/img/noCheck.png" alt="">
+                <img v-if="checkAll"  src="/img/isCheck.png" alt="">
+                <img v-else  src="/img/noCheck.png" alt="">
             </div>
             <div class="cartMsgAll">
-                已选（1）￥199
+                已选（{{sucessNum}}）￥{{setTotal()}}
             </div>
             <div class="cartAllDoButton" @click="compile">{{isShow?'编辑':'完成'}}</div>
-            <div class="cartAllDoButton pay">下单</div>
+            <div class="cartAllDoButton pay" @click="delAll">{{isShow?'下单':'删除所有'}}</div>
         </div>
-
         <foots/>
     </div>
+
 </template>
 
 <script>
@@ -73,31 +70,50 @@
             ...mapState({
                 cartList:state=>state.cart.cartList,
                 checkAll:state=>state.cart.checkAll,
+                sucessNum:state=>state.cart.sucessNum,
+                total:state=>state.cart.total,
             })
         },
         mounted() {
             this.$store.dispatch('cart/getShopCar')
-            console.log(this.checkAll,'-------all')
         },
         methods: {
-            ...mapGetters('cart',['IsAll']),
+            ...mapGetters('cart',['setTotal']),
+            // 点击每一项
             itemCheck(checked,i){
                 this.$store.commit('cart/setCheck',{checked,i})
             },
+            // 编辑
             compile(){
                 this.isShow=!this.isShow
             },
+            // 全选
             allClick(){
-                this.$store.commit('cart/setAllCheck')
+                this.$store.commit('cart/setAllCheck',this.checkAll)
+            },
+            // --
+            min(i){
+                this.$store.commit('cart/setMin',i)
+            },
+            // ++
+            max(i){
+                this.$store.commit('cart/setMax',i)
+            },
+            // 删除所有
+            delAll(){
+                if(!this.isShow){
+                    const arr=this.cartList.filter((item)=>item.checked===1)
+                    const idArr=[]
+                    arr.forEach(item=>{
+                        idArr.push(item.product_id)
+                    })
+                    console.log(idArr)
+                    this.$store.dispatch('cart/getdelShop',{productIds:idArr.join()})
+                }else{
+                    alert('下单功能还未get到！请耐心等待！')
+                }
             }
-        },
-        watch: {
-            cartList(cartList){
-                console.log(this.cartList,11123213213)
-            }
-        },
-        created() {
-        },
+        }
     }
 </script>
 
@@ -106,8 +122,11 @@
         width: 100%;
         height: 100%;
         background-color: #f5f5f9;
+        display: flex;
+        flex-direction: column;
     }
     .noGoods{
+        flex: 1;
         img{
             width: 40%;
             margin: 1rem 30% 0;
@@ -117,6 +136,10 @@
             color: #afafaf;
             font-style: .15rem;
         }
+    }
+    .cartGoodsListWrap{
+        flex: 1;
+        overflow: auto;
     }
     .cartGoodsItem{
         display: flex;
@@ -162,15 +185,11 @@
         }
     }
     .cartGoodsDo{
-        position: fixed;
-        bottom: .5rem;
         height: .55rem;
-        left: 0;
         width: 100%;
         background: #fff;
         display: flex;
         box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.2);
-        z-index: 1000;
         .isCheckItem{
             width: .4rem;
             display: flex;
@@ -238,7 +257,7 @@
                     border: 1px solid gainsboro;
                     line-height: .3rem;
                     text-align: center;
-                    font-size: .2rem;
+                    font-size: .16rem;
                 }
                 li:nth-of-type(1){
                     flex: 3; 

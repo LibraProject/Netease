@@ -2,88 +2,122 @@
   <div class="wrap">
     <headers :txt="txt" />
     <div class="cateBox">
-        <div class="catd" ref="catd">
-            <div class="content">
-                <span 
-                  v-for="(ele) in categorysArr" 
-                  :class="{cative:id==ele.id}" 
-                  @click="setInd(ele.id,ele)" 
-                  :key="ele.id"
-                  :ref="ele.id"
-                >{{ele.name}}</span>
-            </div>
+      <div class="catd" ref="catd">
+        <div class="content">
+          <span
+            v-for="(ele) in categorysArr"
+            :class="{cative:id==ele.id}"
+            @click="setInd(ele.id,ele)"
+            :key="ele.id"
+            :ref="ele.id"
+          >{{ele.name}}</span>
         </div>
-        <bscrolls :goodsList="renderList" :msgName="obj"></bscrolls>
+      </div>
+      <commonScroll
+        :list="{
+        ...category,
+        refreshDispatch: 'category/pullRefresh',
+        loadMoreDispatch: 'category/loadMore'}"
+      >
+        <template slot="headDetail">
+          <div class="categoryDetail">
+            <div>{{name}}</div>
+            <div>{{frontName}}</div>
+          </div>
+        </template>
+
+        <template v-slot:default="slotProps">
+          <cateGoryGoods :flag="false" :goodsList="slotProps.data" />
+        </template>
+      </commonScroll>
     </div>
   </div>
 </template>
 
 <script>
-import { headers, bscrolls } from "@/components";
-import { mapActions, mapState } from "vuex";
-import BScroll from 'better-scroll'
+import { getCategory } from "@/service/axios";
+import { headers, cateGoryGoods, commonScroll } from "@/components";
+import { mapActions, mapState, mapMutations } from "vuex";
+import BScroll from "better-scroll";
+
 export default {
   data() {
     return {
       txt: "奇趣分类",
-      id:'1005000',
-      element:[],
-      scroll:null,
-      obj:{
-        name:'',
-        frontName:''
+      id: "1005000",
+      // element: [],
+      scroll: null,
+      obj: {
+        name: "",
+        frontName: ""
       },
-      ind:0
+      ind: 0,
     };
   },
-  components: { 
+  components: {
     headers,
-    bscrolls
+    cateGoryGoods,
+    commonScroll
   },
   computed: {
-      ...mapState({
-          categorysArr:state=>state.catalog.categorysArr,
-          renderList:state=>state.catalog.renderList,
-          arr:state=>state.catalog.arr,
-      })
+    ...mapState({
+      categorysArr: state => state.catalog.categorysArr,
+      name: state => state.catalog.name,
+      frontName: state => state.catalog.frontName,
+      category: state => state.category
+    })
   },
   methods: {
-    ...mapActions("catalog", ["categorys","getGood"]),
-    setInd(id,ele){
-        this.obj.name = ele.name
-        this.obj.frontName = ele.front_name
-        this.id=id
-        this.categorys(id);
-        this.getGood({ categoryId: this.id, page: 1, size: 1000 })
-    }
+    ...mapActions("catalog", ["categorys",]),
+    ...mapActions({
+      pullRefresh: "category/pullRefresh"
+    }),
+    ...mapMutations({
+      setCategoryId: "category/setCategoryId"
+    }),
+    setInd(id, ele) {
+      this.obj.name = ele.name;
+      this.obj.frontName = ele.front_name;
+      this.id = id;
+
+      // 获取第一页数据
+      this.setCategoryId(id);
+      this.pullRefresh();
+    },
+    // setMsg() {
+    //   let index = this.element.findIndex(el => el.id == this.id);
+    //   this.obj.name = this.element[index].name;
+    //   this.obj.frontName = this.element[index].front_name;
+    // },
+    // getCategoryList: async that => {
+    //   let data = await getCategory();
+    //   that.element = data.categoryList;
+    //   that.setMsg();
+    // }
   },
-  mounted(){
-      this.$nextTick(()=>{
-          this.id=this.$route.params.id;
-            this.categorys(this.id);
-            this.scroll = new BScroll(this.$refs.catd, {
-                click: document.body.width > 768 ? false : true,
-                scrollX: true,
-                eventPassthrough: 'vertical'
-            });
-          this.getGood({ categoryId: this.id, page: 1, size: 1000 })
-      })
+  mounted() {
+    this.scroll = new BScroll(this.$refs.catd, {
+      click: document.body.width > 768 ? false : true,
+      scrollX: true,
+      eventPassthrough: "vertical"
+    });
+    // 获取第一页数据
+    this.setCategoryId(this.id);
+    this.pullRefresh();
   },
-  created(){
-      this.id=this.$route.params.id;
-      let index = this.categorysArr.findIndex((el)=>el.id==this.id);
-      this.obj.name = this.categorysArr[index].name
-      this.obj.frontName = this.categorysArr[index].front_name
+  created() {
+    this.id = this.$route.params.id;
+    // this.getCategoryList(this);
+    this.categorys(this.id);
   },
   watch: {
-      id(id){
-        console.log(id)
-        let target=this.$refs[id];//点击的每一项
-        // console.log(target);
-        this.scroll.scrollToElement(target[0],500);
-      }
-      
-  },
+    id(id) {
+      // console.log(id ,'-------------id')
+      let target = this.$refs[id]; //点击的每一项
+      this.scroll.scrollToElement(target[0], 500);
+    },
+
+  }
 };
 </script>
 
@@ -98,50 +132,42 @@ export default {
   flex-direction: column;
   padding-top: 0.5rem;
 }
-.cateBox{
+.cateBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #f5f5f9;
+  .catd {
     width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: #f5f5f9;
-    .catd{
-        width: 100%;
-        height: .45rem;
-        overflow: hidden;
-        background-color: #fff;
-        position: absolute;
-        z-index: 5;
-        .content{
-          width: 6.75rem;
-          height: 100%;
-          display: flex;
-          span{
-              width: .75rem;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              flex-shrink: 0;
-          }
-        }
+    height: 0.45rem;
+    overflow: hidden;
+    background-color: #fff;
+    position: absolute;
+    z-index: 5;
+    .content {
+      width: 6.75rem;
+      height: 100%;
+      display: flex;
+      span {
+        width: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
     }
+  }
 }
-.categoryDetail{
-    padding: .1rem 0;
-    margin-top: .4rem;
-    div:nth-of-type(1){
-      height: .3rem;
-      line-height: .3rem;
-      text-align: center;
-    }
-    div:nth-of-type(2){
-      color: #666;
-      height: .25rem;
-      line-height: .25rem;
-      font-size: .14rem;
-      text-align: center;
-    }
+.cative {
+  color: skyblue;
+  border-bottom: 1px solid skyblue;
 }
-.cative{
-    color: skyblue;
-    border-bottom: 1px solid skyblue;
+.cateGoryItem {
+  width: 50%;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
 }
 </style>

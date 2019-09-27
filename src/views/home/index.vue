@@ -12,20 +12,18 @@
         <ptitles :title="Preole" />
         <hotGoods :hotGoods="list.hotGoodsList"/>
         <ptitles :title="zhuanti" />
-        <category :category="list.categoryList"/>
         <seamless :topicList="list.topicList"/>
         <shoplist :shopArr="list.categoryList"/>
       </div>
-    
     <foots/>
   </div>
 </template>
 <script>
 import { getList } from "@/service";
-import {swiper, ptlist, ptitles, branwrap, newGood, hotGoods, category, foots, seamless, shoplist } from '@/components'
+import {swiper, ptlist, ptitles, branwrap, newGood, hotGoods, foots, seamless, shoplist } from '@/components'
 export default {
   props: {},
-  components: { swiper, ptlist, ptitles, branwrap, newGood, hotGoods, category, foots, seamless, shoplist },
+  components: { swiper, ptlist, ptitles, branwrap, newGood, hotGoods, foots, seamless, shoplist },
   data() {
     return {
       list: {},

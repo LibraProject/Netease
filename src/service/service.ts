@@ -9,7 +9,6 @@ export let categorys = ()=>{
      return request.get('/catalog/index')
 }
 export let category = (id: any)=>{
-     // console.log(id)
      return request.get(`/catalog/current?id=${id}`)
 }
 

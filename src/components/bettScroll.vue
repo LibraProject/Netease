@@ -26,14 +26,25 @@
 <script>
 import BScroll from "better-scroll";
 import { mapActions, mapState } from "vuex";
+import { goodList } from '../service';
 export default {
-  props: ['goodsList','msgName'],
+  props:{
+    goodsList:Array,
+    msgName:Object,
+    page:1,
+    limit:10,
+    upfn:Function,
+    down:Function,
+    value:Array,
+    currentLength:Number
+     
+  },
   components: {},
   data() {
     return {
       Bs: "",
-      isFlag: false, // 下拉
-      isloading: false, // 上拉
+      isFlag: false, 
+      isloading: false, 
       page: 1,
       limit: 10,
       num: 30,
@@ -67,7 +78,7 @@ export default {
         this.msgUp = this.BsDate.up;
         this.isloading = true;
       }else{
-        this.msgUp = this.BsDate.upend;
+        this.msgUp = this.BsDate.upend;4
       }
      
     },
@@ -80,31 +91,24 @@ export default {
         // 上拉加载
       }
       if (this.isloading) {
-        
-        // 下拉刷新
-        // location.reload();
+        location.reload();
       }
     },
-    // setArr(){
-    //   console.log(this.goodsList.length)
-    //   this.newArr.concat(this.goodsList.slice((this.page-1)*this.limit,this.page*this.limit))
-    // }
-
+    cateClick(a,b){
+      console.log(a,b)
+    }
   },
   created() {
     this.newArr = this.goodsList.slice((this.page-1)*this.limit,this.page*this.limit)
     
   },
   watch:{
-    newArr(newArr){
-      this.Bs.refresh();
-    },
     goodsList(goodsList){
       this.newArr = this.goodsList.slice((this.page-1)*this.limit,this.page*this.limit)
     }
   },
   mounted() {
-    this.$nextTick(() => {
+    this.$nextTick(() => {w2
       if (!this.Bs) {
         this.Bs = new BScroll(".BScrollwrap", {
           scrollY: true,
@@ -121,8 +125,7 @@ export default {
       } else {
         this.Bs.refresh();
       }
-    });
-    this.Bs.refresh();
+    })
   }
 };
 </script>
@@ -140,7 +143,6 @@ export default {
     position: relative;
     .categoryDetail{
     padding: .1rem 0;
-    // margin-top: .4rem;
     div:nth-of-type(1){
       height: .3rem;
       line-height: .3rem;

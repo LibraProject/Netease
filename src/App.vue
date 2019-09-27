@@ -21,5 +21,5 @@ html{
     font-size: calc(100/375*100vw)
 }
 
-
+@import url('/fonts/fonts/iconfont.css')
 </style>

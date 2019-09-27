@@ -46,7 +46,7 @@ export default {
       this.category(id)
     },
     goCateDetail(id){
-      console.log(id)
+       this.$router.push({name:'categorys',params:{id}})
     }
   },
   created() {
@@ -64,7 +64,7 @@ export default {
   // overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem 0;
+  padding-top:0.5rem;
 }
 .main {
   display: flex;

@@ -40,12 +40,19 @@
 </script>
 
 <style scoped>
+.tabPageContent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
 .main{
-    margin-bottom: .5rem;
+    flex:1;
+    overflow-y:scroll;
 }
 .topicItem{
     height: 2.9rem;
-    margin-top: .1rem;
     background: white;
     display: block;
     color: #000;
@@ -86,7 +93,5 @@
     line-height: .2rem;
     height: .35rem;
 }
-.tabPageContent .topicItem:nth-of-type(1){
-    margin-top: 0;
-}
+
 </style>

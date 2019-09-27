@@ -3,7 +3,7 @@
         <div
             :class="[{'clerbootom':index==goodsList.length-1},'cateGoryItem']"
             v-for="(item,index) in goodsList"
-            :key="item.name"
+            :key="item.id"
             @click="cateClick(item.id,item.name)"
         >
             <img v-lazy="item.list_pic_url" alt />
