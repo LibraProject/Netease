@@ -1,4 +1,4 @@
-import { topic, topicDetail, commitList, relatedList, addLange, commit} from '../../service'
+import { topic, topicDetail, commitList, relatedList, addLange } from '../../service'
 
 export default {
     namespaced: true,
@@ -32,7 +32,7 @@ export default {
             state.content=payload
         },
         setCommit(state:any,payload:any){
-            console.log(payload)
+            console.log(payload,'......comment')
             state.commit=payload
         },
         setLange(state:any,payload:any){
@@ -66,9 +66,10 @@ export default {
             let result = await addLange({ valueId, typeId, content })
             commit('setLange', result)
         },
-        async  getCommit({ commit, state }: any) {
+        async  getCommit({ commit, state }: any,payload:any) {
+            // console.log(payload)
             const { valueId, typeId } = state
-            let result = await commitList({ valueId, typeId, page:1, size:100 })
+            let result = await commitList({ valueId:payload, typeId, page:1, size:100 })
             commit('setCommit', result.data)
         },
     }
