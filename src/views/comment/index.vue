@@ -8,6 +8,9 @@
                     <span>{{item.add_time}}</span>
                 </div>
                 <div class="userComment">{{item.content}}</div>
+                <div class="commentPicList">
+                    <img v-for="ele in item.pic_list" :key="ele.id" v-lazy="ele.pic_url" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -28,7 +31,7 @@
         },
         computed:{
             ...mapState({
-                commit:state=>state.topic.commit
+                commit:state=>state.topic.commit,
             })
         },
         mounted() {
@@ -36,7 +39,7 @@
         },
         methods: {
             getList(){
-                this.$store.dispatch('topic/getCommit')
+                this.$store.dispatch('topic/getCommit',this.$route.params.id)
             }
         },
     }
@@ -67,6 +70,15 @@
         .userComment{
             line-height: .3rem;
             font-size: .15rem;
+        }
+        .commentPicList{
+            display: flex;
+            img{
+                width: 1rem;
+                height: 1rem;
+                box-sizing: content-box;
+                margin-right: .05rem;
+            }
         }
         &{
              position: relative;

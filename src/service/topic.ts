@@ -24,8 +24,3 @@ export let  relatedList = (params:any) => {
 export let  addLange = (params:any) => {
     return requerst.post('comment/post',params);
 }
-
-// 查看评论
-export let  commit = (params:any) => {
-    return requerst.get('/comment/list',{params});
-}

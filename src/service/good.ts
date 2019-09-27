@@ -9,3 +9,8 @@ export let goodDetail = (params: object) => {
 export let goodLook = (params: object) => {
     return requerst.get("/goods/related", {params});
 };
+
+// 查看评论
+export let  commit = (params:any) => {
+    return requerst.get('/comment/list',{params});
+}

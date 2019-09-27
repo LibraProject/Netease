@@ -1,4 +1,4 @@
-import { goodDetail, goodLook } from '../../service'
+import { goodDetail, goodLook, commit } from '../../service'
 
 export default {
     namespaced: true,
@@ -11,7 +11,8 @@ export default {
         info:{},
         commentData:{},
         img:'',
-        numCar:0
+        numCar:0,
+        productList:{}
     },
     mutations: {
         setGood(state:any,payload:any){
@@ -29,6 +30,8 @@ export default {
             state.issue=payload.issue
             // 主要参数
             state.info=payload.info
+            // 加入购物车需要的参数
+            state.productList=payload.productList[0]
         },
         setGoodLook(state:any,payload:any){
             state.goodsList=payload.goodsList
@@ -39,14 +42,20 @@ export default {
         }
     },
     actions: {
-        async  getGood({ commit }: any, payload: object) {
+        async getGood({ commit }: any, payload: object) {
             let result = await goodDetail(payload)
-            // console.log(result.data,1111)
+            console.log(result.data,1111)
             commit('setGood',result.data)
         },
-        async  getGoodLook({ commit }: any, payload: object) {
+        async getGoodLook({ commit }: any, payload: object) {
             let result = await goodLook(payload)
             commit('setGoodLook',result.data)
+            // console.log(result.data,1111)
+        },
+        async getCommit({ commit }: any, payload: object) {
+            console.log(payload)
+            let result = await commit(payload)
+            // commit('setGoodLook',result.data)
             // console.log(result.data,1111)
         }
     }
