@@ -9,9 +9,9 @@
       </div>
       <div class="cateL">
           <div class="cateBaner">
-            <img v-if="categorysArr[ind].wap_banner_url" v-lazy="categorysArr[ind].wap_banner_url" alt="">
+            <img v-if="categorysArr.length" v-lazy="categorysArr[ind].wap_banner_url" alt="">
           </div>
-          <div class="catetitle">——&emsp;{{categorysArr[ind].name}}&emsp;——</div>
+          <div class="catetitle" v-if="categorysArr.length">——&emsp;{{categorysArr[ind].name}}&emsp;——</div>
           <div class="heng" v-if="renderArr.length">
               <div class="newGoodsItem" v-for="element in renderArr" :key="element.id" @click="goCateDetail(element.id)">
                 <img v-lazy="element.wap_banner_url" alt="">
@@ -32,7 +32,7 @@ export default {
     return {
       txt: "商品分类",
       ind: 0,
-      id:500
+      id:'1005000'
     };
   },
   components: { headers, foots },
@@ -50,9 +50,8 @@ export default {
     }
   },
   created() {
-    this.categorys();
-    console.log(this.categorysArr),
-    this.category(1005000)
+    this.categorys(this.id);
+    this.category(this.id)
   }
 };
 </script>

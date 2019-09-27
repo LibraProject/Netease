@@ -12,11 +12,11 @@ export default {
     },
     mutations: {
         setRend(state:any,payload: any){
-            // console.log(payload,'head----------')
+            console.log(payload,'head----------')
             state.renderArr = payload
         },
         setCate(state: any, payload: any) {
-            // console.log(payload,'----setCate')
+            console.log(payload,'----setCate')
             state.categorysArr = payload.data.categoryList;
             let index = payload.data.categoryList.findIndex((el:any) => el.id == payload.id);
             state.name=payload.data.categoryList[index].name
@@ -30,7 +30,8 @@ export default {
         }
     },
     actions: {
-        async categoryNav({commit}: any,id:any){
+        async category({commit}: any,id:any){
+            console.log(id,'------id')
             let result = await category(id)
             commit('setRend',result.data.currentCategory.subCategoryList)
         },
