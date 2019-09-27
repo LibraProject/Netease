@@ -19,6 +19,7 @@
         methods: {
             goback(){
                 this.$router.history.go(-1)
+                console.log(this.$router.history)
             }
         },
     }
