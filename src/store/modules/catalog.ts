@@ -12,7 +12,7 @@ export default {
     },
     mutations: {
         setRend(state:any,payload: any){
-            // console.log(payload,'head----------')
+            console.log(payload,'head----------')
             state.renderArr = payload
         },
         setCate(state: any, payload: any) {
@@ -30,7 +30,8 @@ export default {
         }
     },
     actions: {
-        async categoryNav({commit}: any,id:any){
+        async category({commit}: any,id:any){
+            console.log(id,'------id')
             let result = await category(id)
             commit('setRend',result.data.currentCategory.subCategoryList)
         },
