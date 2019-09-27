@@ -1,6 +1,6 @@
 <template>
-    <div class="wrap">
-        <main class="main">
+  <div class="wrap">
+    <main class="main">
       <div class="userMesWrap">
         <div class="userLogo"></div>
         <div class="userMsgs">
@@ -8,25 +8,21 @@
           <div>普通用户</div>
         </div>
       </div>
-      <div class="userPower">
-        <div class="userP" v-for="item in userlist" :key="item.id">
+      <div class="userPower" @click="clickME">
+        <div class="userP" v-for="item in userlist" :key="item.id" >
           <i :class="item.icon"></i>
           <div>{{item.name}}</div>
         </div>
       </div>
       <div class="loginOut" @click="getloginOut()">退出登录</div>
-   
-       
-        </main>
-         <foots />
-    </div>
-    
- 
+    </main>
+    <foots />
+  </div>
 </template>
 
 <script>
 import { foots } from "../../components";
-import '@/assets/fonts/iconfont.css'
+import "@/assets/fonts/iconfont.css";
 export default {
   data() {
     return {
@@ -94,17 +90,22 @@ export default {
       ]
     };
   },
-  components: { foots }
+  components: { foots },
+  methods:{
+    clickME(e){
+      console.log(e)
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.wrap{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+.wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 .main {
   flex: 1;
@@ -129,7 +130,7 @@ export default {
     border-radius: 50%;
   }
   .userMsgs {
-    font-size:.15rem;
+    font-size: 0.15rem;
     div {
       height: 0.35rem;
       display: flex;
@@ -154,7 +155,7 @@ export default {
     justify-content: center;
     i {
       display: block;
-      font-size: .3rem;
+      font-size: 0.3rem;
       text-align: center;
       color: #9e9e9e;
     }
