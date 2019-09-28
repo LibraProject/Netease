@@ -4,7 +4,8 @@
 <script>
 export default {
   props: {
-    title: String
+    title: String,
+    default:'标题'
   }
 };
 </script>

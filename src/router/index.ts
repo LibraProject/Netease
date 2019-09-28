@@ -96,7 +96,7 @@ const router=new Router({
       component: ()=>import('../views/collect/index.vue')
     },
     {
-      name: '地址管理',
+      name: 'address',
       path: '/address',
       // isTab: false,
       component: ()=>import('../views/address/index.vue')

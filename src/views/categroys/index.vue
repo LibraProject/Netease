@@ -44,8 +44,7 @@ export default {
   data() {
     return {
       txt: "奇趣分类",
-      id: "1005000",
-      // element: [],
+      id: "1005000", 
       scroll: null,
       obj: {
         name: "",
@@ -83,17 +82,7 @@ export default {
       // 获取第一页数据
       this.setCategoryId(id);
       this.pullRefresh();
-    },
-    // setMsg() {
-    //   let index = this.element.findIndex(el => el.id == this.id);
-    //   this.obj.name = this.element[index].name;
-    //   this.obj.frontName = this.element[index].front_name;
-    // },
-    // getCategoryList: async that => {
-    //   let data = await getCategory();
-    //   that.element = data.categoryList;
-    //   that.setMsg();
-    // }
+    }
   },
   mounted() {
     this.scroll = new BScroll(this.$refs.catd, {
@@ -107,14 +96,12 @@ export default {
   },
   created() {
     this.id = this.$route.params.id;
-    // this.getCategoryList(this);
     this.categorys(this.id);
   },
   watch: {
     id(id) {
-      // console.log(id ,'-------------id')
       let target = this.$refs[id]; //点击的每一项
-      this.scroll.scrollToElement(target[0], 500);
+      target && this.scroll.scrollToElement(target[0], 500);
     },
 
   }
