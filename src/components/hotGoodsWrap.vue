@@ -1,6 +1,6 @@
 <template>
     <div class="hotGoodsWrap">
-        <div class="hotGoodsItem" v-for="ele in hotGoods" :key="ele.id">
+        <div class="hotGoodsItem" v-for="ele in hotGoods" :key="ele.id" @click="goodclick(ele.id,ele.name)">
             <img v-lazy="ele.list_pic_url" alt="">
             <div class="hotGoodsInfos">
                 <div>{{ele.name}}</div>
@@ -14,24 +14,10 @@
 <script>
 export default {
     props:['hotGoods'],
-    components:{
-
-    },
-    data(){
-        return {
-
-        }
-    },
-    computed:{
-
-    },
     methods:{
-
-    },
-    created(){
-    },
-    mounted(){
-
+        goodclick(id,name){
+            this.$router.push({path:`/goods/${id}`,query:{text:name}})
+        }
     }
 }
 </script>

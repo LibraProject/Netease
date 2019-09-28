@@ -1,23 +1,37 @@
 <template>
   <div class="wrap">
-    <headers :txt="txt" />
+    <div class="searchWrap">
+      <div class="searchInput">
+          <router-link to="/goodsSearch">搜索商品，共239款好物</router-link>
+      </div>
+    </div>
     <div class="main">
-      <div class="cateR" v-if="categorysArr.length">
+      <div class="cateR" v-if="classList.length">
         <ul>
-          <li v-for="(item,index) in categorysArr" :class="{lactive:ind==index}" @click="clickme(item.id,index)" :key="item.id" >{{item.name}}</li>
+          <li
+            v-for="(item,index) in classList"
+            :class="{lactive:ind==index}"
+            @click="clickme(item.id,index)"
+            :key="item.id"
+          >{{item.name}}</li>
         </ul>
       </div>
       <div class="cateL">
-          <div class="cateBaner">
-            <img v-if="categorysArr.length" v-lazy="categorysArr[ind].wap_banner_url" alt="">
+        <div class="cateBaner">
+          <img v-if="classList.length" v-lazy="classList[ind].wap_banner_url" alt />
+        </div>
+        <div class="catetitle" v-if="classList.length">——&emsp;{{classList[ind].name}}&emsp;——</div>
+        <div class="heng" v-if="renderArr.length">
+          <div
+            class="newGoodsItem"
+            v-for="element in renderArr"
+            :key="element.id"
+            @click="goCateDetail(element.id)"
+          >
+            <img v-lazy="element.wap_banner_url" alt />
+            <p>{{element.name}}</p>
           </div>
-          <div class="catetitle" v-if="categorysArr.length">——&emsp;{{categorysArr[ind].name}}&emsp;——</div>
-          <div class="heng" v-if="renderArr.length">
-              <div class="newGoodsItem" v-for="element in renderArr" :key="element.id" @click="goCateDetail(element.id)">
-                <img v-lazy="element.wap_banner_url" alt="">
-                <p>{{element.name}}</p>
-              </div>
-          </div>
+        </div>
       </div>
     </div>
     <foots />
@@ -32,26 +46,26 @@ export default {
     return {
       txt: "商品分类",
       ind: 0,
-      id:'1005000'
+      id: "1005000"
     };
   },
   components: { headers, foots },
   computed: {
-    ...mapState("catalog", ["categorysArr",'renderArr'])
+    ...mapState("catalog", ["classList", "renderArr"])
   },
   methods: {
-    ...mapActions("catalog", ["categorys",'category']),
+    ...mapActions("catalog", ["getCategorys", "category"]),
     clickme(id, ind) {
       this.ind = ind;
-      this.category(id)
+      this.category(id);
     },
-    goCateDetail(id){
-       this.$router.push({name:'categorys',params:{id}})
+    goCateDetail(id) {
+      this.$router.push({ name: "categorys", params: { id } });
     }
   },
   created() {
-    this.categorys(this.id);
-    this.category(this.id)
+    this.getCategorys();
+    this.category(this.id);
   }
 };
 </script>
@@ -63,7 +77,34 @@ export default {
   // overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding-top:0.5rem;
+  padding-top: 0.5rem;
+}
+.searchWrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: .5rem;
+    background: #fff;
+    box-shadow: 0 0.04rem 0.08rem 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    font-size: .14rem;
+    .searchInput{
+      width: 90%;
+      height: 70%;
+      background: #ededed;
+      border-radius: .05rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: .14rem;
+      a{
+        color: #666;
+      }
+    }
 }
 .main {
   display: flex;
@@ -90,48 +131,47 @@ export default {
       }
     }
   }
-  .cateL{
+  .cateL {
     flex: 1;
-    overflow-y:scroll;
-    padding: .1rem;
-    .catetitle{
+    overflow-y: scroll;
+    padding: 0.1rem;
+    .catetitle {
       color: #2196f3;
       text-align: center;
-      height: .45rem;
-      line-height: .45rem;
+      height: 0.45rem;
+      line-height: 0.45rem;
     }
-    .cateBaner{
+    .cateBaner {
       width: 100%;
       height: 1rem;
-      img{
+      img {
         width: 100%;
         height: 100%;
       }
     }
-    .heng{
+    .heng {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-      .newGoodsItem{
+      .newGoodsItem {
         width: 50%;
         height: 1.5rem;
         text-align: center;
-        padding: .2rem 0;
-        img{
-            height: 50%;
+        padding: 0.2rem 0;
+        img {
+          height: 50%;
         }
-        p{
-            padding: .08rem 0;
+        p {
+          padding: 0.08rem 0;
         }
-        .Picolor{
-            color:darkred;
-            font-weight: 100;
-            height: .15rem;
-            line-height: .15rem;
+        .Picolor {
+          color: darkred;
+          font-weight: 100;
+          height: 0.15rem;
+          line-height: 0.15rem;
         }
+      }
     }
-    }
-    
   }
 }
 </style>
