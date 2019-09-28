@@ -35,11 +35,7 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import { getCategory } from "@/service/axios";
-=======
 import { getCategory } from "@/service/bran";
->>>>>>> 21f75edfb037c461e4ece45c8afd9db3582f3d82
 import { headers, cateGoryGoods, commonScroll } from "@/components";
 import { mapActions, mapState, mapMutations } from "vuex";
 import BScroll from "better-scroll";
