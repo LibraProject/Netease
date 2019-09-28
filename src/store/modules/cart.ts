@@ -71,7 +71,12 @@ export default {
         },
         setBtnall(state:any){
             // 计算全选按钮状态
-            return state.cartList.every((item:any)=>item.checked===1)
+            if(state.cartList.length){
+                return state.cartList.every((item:any)=>item.checked===1)
+            }else{
+                return false
+            }
         }
+            
     }
 }

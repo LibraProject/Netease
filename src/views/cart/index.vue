@@ -244,7 +244,6 @@
             }
             .countOp{
                 flex: 1;
-                // flex-direction: row-reverse;
                 display: flex;
                 margin-left: .5rem;
                 border: 1px solid gainsboro;

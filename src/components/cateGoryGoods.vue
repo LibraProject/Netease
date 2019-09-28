@@ -1,8 +1,8 @@
 <template>
     <div class="cateWrap">
         <div
-            :class="[{'clerbootom':index==goodsList.length-1},'cateGoryItem']"
-            v-for="(item,index) in goodsList"
+            class='cateGoryItem'
+            v-for="item in goodsList"
             :key="item.id"
             @click="cateClick(item.id,item.name)"
         >
@@ -10,7 +10,7 @@
             <p>{{item.name}}</p>
             <p class="catePrice">￥ {{item.retail_price}}</p>
         </div>
-        <div v-if="flag" class="cateGoryItem cateGoryItemss" @click="moreClick">
+        <div v-if="flag" class="cateGoryItem cateMore" @click="moreClick">
             <p>更多 {{eleName}} 好物</p>
             <img src="/img/icon_go_more.png" alt />
         </div>
@@ -41,14 +41,16 @@
 .cateWrap{
   display: flex;
   flex-wrap: wrap;
+  background: #ccc;
+  
 }
 .cateGoryItem {
-  width: 50%;
+  width: 49.8%;
   text-align: center;
   box-sizing: border-box;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
   background: white;
+  margin: auto;
+  margin-top: 1px;
   img {
     width: 100%;
     height: auto;
@@ -79,13 +81,19 @@
     line-height: 0.3rem;
   }
 }
-.clerbootom {
-  border-bottom: 0;
-}
-.cateGoryItemss {
-  border-bottom: 0;
-}
 .catePrice{
   color:red;
+}
+.cateMore{
+  width: 49.8%;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img{
+    height: .3rem;
+    width: .3rem;
+  }
 }
 </style>
