@@ -11,11 +11,6 @@
         props:{
             txt:String
         },
-        deta(){
-            return {
-
-            }
-        },
         methods: {
             goback(){
                 this.$router.history.go(-1)

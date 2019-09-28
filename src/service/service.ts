@@ -4,7 +4,7 @@ export let  getList = ()=>{
      return request.get('/');
 }
 // 分类获取初始数据
-export let categorys = ()=>{
+export let catalog = ()=>{
      // console.log(id)
      return request.get('/catalog/index')
 }
@@ -26,4 +26,9 @@ export let branddetail = (id:any)=>{
 // 获取制造商列表
 export let brandList = (obj?:any)=>{
      return request.get('/goods/list',{params:obj})
+}
+
+// 分类中每一项点击跳转页面
+export let goodCategory = (params:any)=>{
+     return request.get('/goods/category',{params})
 }

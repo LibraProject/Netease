@@ -9,17 +9,12 @@
 <script>
 export default {
   props: ["channel"],
-  components: {},
-  data() {
-    return {};
-  },
-  computed: {},
   methods: {
-    goCateGroys(id){
+    goCateGroys(id) {
       // console.log(id)
-      this.$router.push({name:'categorys',params:{id}})
+      this.$router.push({ name: "categorys", params: { id } });
     }
-  },
+  }
 };
 </script>
 <style scoped lang="scss">

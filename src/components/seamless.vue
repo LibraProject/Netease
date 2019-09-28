@@ -1,7 +1,7 @@
 <template>
   <div class="swiper-container seamless">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" v-for="item in topicList" :key="item.id">
+      <div class="swiper-slide" v-for="item in topicList" :key="item.id" @click="topItem(item.id)">
         <img class="Pices" v-lazy="item.scene_pic_url" alt />
         <div class="topGoodSubTitle">
           {{item.title}}
@@ -22,8 +22,6 @@ export default {
       seam: ""
     };
   },
-  computed: {},
-  methods: {},
   created() {
     this.$nextTick(() => {
       this.seam = new swiper(".seamless", {
@@ -36,7 +34,11 @@ export default {
       });
     });
   },
-  mounted() {}
+  methods: {
+      topItem(id){
+        this.$router.push({path:`/topicDetail/${id}`})
+      }
+  },
 };
 </script>
 <style scoped lang="scss">

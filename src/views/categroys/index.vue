@@ -51,7 +51,7 @@ export default {
         name: "",
         frontName: ""
       },
-      ind: 0,
+      ind: 0
     };
   },
   components: {
@@ -68,7 +68,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions("catalog", ["categorys",]),
+    ...mapActions("catalog", ["categorys", "getGoodCategory"]),
     ...mapActions({
       pullRefresh: "category/pullRefresh"
     }),
@@ -83,7 +83,7 @@ export default {
       // 获取第一页数据
       this.setCategoryId(id);
       this.pullRefresh();
-    },
+    }
     // setMsg() {
     //   let index = this.element.findIndex(el => el.id == this.id);
     //   this.obj.name = this.element[index].name;
@@ -96,6 +96,7 @@ export default {
     // }
   },
   mounted() {
+    //导航的better-scroll
     this.scroll = new BScroll(this.$refs.catd, {
       click: document.body.width > 768 ? false : true,
       scrollX: true,
@@ -108,15 +109,16 @@ export default {
   created() {
     this.id = this.$route.params.id;
     // this.getCategoryList(this);
-    this.categorys(this.id);
+
+    // 分类各项的跳转
+    this.getGoodCategory({ id: this.id });
   },
   watch: {
     id(id) {
       // console.log(id ,'-------------id')
       let target = this.$refs[id]; //点击的每一项
       this.scroll.scrollToElement(target[0], 500);
-    },
-
+    }
   }
 };
 </script>
