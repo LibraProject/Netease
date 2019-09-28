@@ -41,7 +41,7 @@
                 <img v-else  src="/img/noCheck.png" alt="">
             </div>
             <div class="cartMsgAll">
-                已选（{{sucessNum}}）￥{{setTotal()}}
+                已选({{sucessNum}})￥{{setTotal()}}
             </div>
             <div class="cartAllDoButton" @click="compile">{{isShow?'编辑':'完成'}}</div>
             <div class="cartAllDoButton pay" @click="delAll">{{isShow?'下单':'删除所有'}}</div>

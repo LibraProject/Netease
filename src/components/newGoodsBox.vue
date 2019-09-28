@@ -1,6 +1,6 @@
 <template>
   <div class="newGoodsBox">
-    <div class="newGoodsItem" v-for="element in newGoodList" :key="element.id">
+    <div class="newGoodsItem" v-for="element in newGoodList" :key="element.id" @click="goodclick(element.id,element.name)">
       <img v-lazy="element.list_pic_url" alt />
       <p>{{element.name}}</p>
       <b class="Picolor">￥ {{element.retail_price}}</b>
@@ -16,10 +16,11 @@ export default {
   data() {
     return {};
   },
-  computed: {},
-  methods: {},
-  created() {},
-  mounted() {}
+  methods: {
+    goodclick(id,name){
+      this.$router.push({path:`/goods/${id}`,query:{text:name}})
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
