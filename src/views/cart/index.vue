@@ -6,8 +6,8 @@
             <p>去添加点什么吧~</p>
         </div>
         <div v-else-if="cartList.length" class="cartGoodsListWrap">
-            <div class="cartGoodsItem" v-for="(ele,i) in cartList" :key="ele.id">
-                <div class="isCheckItem" @click="itemCheck(ele.checked,i)">
+            <div class="cartGoodsItem" v-for="(ele) in cartList" :key="ele.id">
+                <div class="isCheckItem" @click="itemCheck(ele.goods_id)">
                     <img v-if="ele.checked" src="/img/isCheck.png" alt="">
                     <img v-else src="/img/noCheck.png" alt="">
                 </div>
@@ -27,21 +27,21 @@
                     <div class="cartEditNum">
                         <div>￥{{ele.retail_price}}</div>
                         <ol class="countOp">
-                            <li @click="min(i)">-</li>
+                            <li @click="min(ele.goods_id)">-</li>
                             <li>{{ele.number}}</li>
-                            <li @click="max(i)">+</li>
+                            <li @click="max(ele.goods_id)">+</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
         <div class="cartGoodsDo">
-            <div class="isCheckItem" @click="allClick">
-                <img v-if="checkAll"  src="/img/isCheck.png" alt="">
+            <div class="isCheckItem" @click="setAllCheck">
+                <img v-if="setBtnall()"  src="/img/isCheck.png" alt="">
                 <img v-else  src="/img/noCheck.png" alt="">
             </div>
             <div class="cartMsgAll">
-                已选（{{sucessNum}}）￥{{setTotal()}}
+                已选({{cartNum()}})￥{{setTotal()}}
             </div>
             <div class="cartAllDoButton" @click="compile">{{isShow?'编辑':'完成'}}</div>
             <div class="cartAllDoButton pay" @click="delAll">{{isShow?'下单':'删除所有'}}</div>
@@ -59,7 +59,7 @@
         data() {
             return {
                 itemChecked:1,
-                isShow:true,
+                isShow:true
             }
         },
         components:{
@@ -69,7 +69,7 @@
         computed: {
             ...mapState({
                 cartList:state=>state.cart.cartList,
-                checkAll:state=>state.cart.checkAll,
+                IsCheckAll:state=>state.cart.IsCheckAll,
                 sucessNum:state=>state.cart.sucessNum,
                 total:state=>state.cart.total,
             })
@@ -78,26 +78,23 @@
             this.$store.dispatch('cart/getShopCar')
         },
         methods: {
-            ...mapGetters('cart',['setTotal']),
+            ...mapGetters('cart',['setTotal','cartNum','setBtnall']),
+            ...mapMutations('cart',['setAllCheck','setCheck','setMin','setMax']),
             // 点击每一项
-            itemCheck(checked,i){
-                this.$store.commit('cart/setCheck',{checked,i})
+            itemCheck(id){
+                this.setCheck(id)
             },
             // 编辑
             compile(){
                 this.isShow=!this.isShow
             },
-            // 全选
-            allClick(){
-                this.$store.commit('cart/setAllCheck',this.checkAll)
-            },
             // --
-            min(i){
-                this.$store.commit('cart/setMin',i)
+            min(id){
+                this.setMin(id)
             },
             // ++
-            max(i){
-                this.$store.commit('cart/setMax',i)
+            max(id){
+                this.setMax(id)
             },
             // 删除所有
             delAll(){

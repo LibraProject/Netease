@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { getCategory } from "@/service/axios";
+import { getCategory } from "@/service/bran";
 import { headers, cateGoryGoods, commonScroll } from "@/components";
 import { mapActions, mapState, mapMutations } from "vuex";
 import BScroll from "better-scroll";

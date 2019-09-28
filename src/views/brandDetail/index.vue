@@ -16,7 +16,7 @@
 
 <script>
 import { headers, cateGoryGoods, empty } from "@/components";
-import { getBrandList } from '../../service/axios'
+import { getBrandList } from '@/service/bran'
 import { mapActions, mapState } from "vuex";
 export default {
   data() {
@@ -42,7 +42,6 @@ export default {
     let { name } = this.$route.query;
     this.title = name;
     this.branddetail(id)
-    console.log(id)
     this.getBrandLists(this,id)
   }
 };
