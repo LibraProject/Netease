@@ -9,6 +9,7 @@ import catalog from './modules/catalog'
 import good from './modules/good'
 import cart from './modules/cart'
 import category from './modules/category'
+import search from './modules/search'
 
 Vue.use(Vuex)
 export default new Vuex.Store({
@@ -18,7 +19,8 @@ export default new Vuex.Store({
     catalog,
     good,
     cart,
-    category
+    category,
+    search
   },
   plugins: [createLogger()]
 })

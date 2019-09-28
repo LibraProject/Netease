@@ -117,7 +117,7 @@ export default {
     id(id) {
       // console.log(id ,'-------------id')
       let target = this.$refs[id]; //点击的每一项
-      this.scroll.scrollToElement(target[0], 500);
+      target && this.scroll.scrollToElement(target[0], 500);
     }
   }
 };
