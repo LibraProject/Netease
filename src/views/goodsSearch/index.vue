@@ -33,9 +33,9 @@
        </div>
        <div class="searchGoods" v-if="isShow===false">
             <ul class="searchConditionWrap">
-                <li class="active">综合</li>
-                <li>价格</li>
-                <li>全部分类</li>
+                <li :class="{active:ind===0}" @click="navClick(0,'id','default')">综合</li>
+                <li :class="{active:ind===1}" @click="priceClick(1,'price','asc')">价格</li>
+                <li :class="{active:ind===2}" @click="navClick(2,'id','desc')">全部分类</li>
             </ul>
             <div class="goods">
                 <cateGoryGoods :flag="false" :goodsList="goodArr"/>
@@ -52,7 +52,8 @@
         data() {
             return {
                 isShow:true,
-                valChooes:''
+                valChooes:'',
+                ind:0,
             }
         },
         components: { cateGoryGoods },
@@ -68,7 +69,17 @@
             },
             goBack(){
                 this.$router.history.go(-1)
-            }
+            },
+            navClick(i,sort,order){
+                console.log(i,sort,this.valChooes)
+                this.getSearchDetail({keyword:this.valChooes, page: 1, size: 100, sort, order, categoryId: 0})
+                this.ind=i
+            },
+            priceClick(i,sort,order){
+                console.log(i,sort,this.valChooes)
+                this.getSearchDetail({keyword:this.valChooes, page: 1, size: 100, sort, order, categoryId: 0})
+                this.ind=i
+            },
         },
         created() {
             this.getSearch()
