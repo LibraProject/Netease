@@ -14,7 +14,7 @@
           <div>{{item.name}}</div>
         </div>
       </div>
-      <div class="loginOut" @click="getloginOut()">退出登录</div>
+      <div class="loginOut">退出登录</div>
     </main>
     <foots />
   </div>
