@@ -10,6 +10,8 @@ import good from './modules/good'
 import cart from './modules/cart'
 import category from './modules/category'
 import address from './modules/address'
+import search from './modules/search'
+
 Vue.use(Vuex)
 export default new Vuex.Store({
   modules: {
@@ -19,7 +21,8 @@ export default new Vuex.Store({
     good,
     cart,
     category,
-    address
+    address,
+    search
   },
   plugins: [createLogger()]
 })
