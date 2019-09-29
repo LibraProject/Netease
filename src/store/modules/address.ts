@@ -1,4 +1,4 @@
-import {getAddress} from '@/service'
+import {getAddress} from '@/service/service'
 export default {
     namespaced:true,
     state: {

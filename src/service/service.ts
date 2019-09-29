@@ -27,14 +27,12 @@ export let branddetail = (id:any)=>{
 export let brandList = (obj?:any)=>{
      return request.get('/goods/list',{params:obj})
 }
-<<<<<<< HEAD
 
 // 分类中每一项点击跳转页面
 export let goodCategory = (params:any)=>{
      return request.get('/goods/category',{params})
-=======
 // 获取用户地址
+}
 export let getAddress = ()=>{
      return request.get('/address/list')
->>>>>>> cyz
 }
