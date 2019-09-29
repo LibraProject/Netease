@@ -11,7 +11,7 @@ export default {
     },
     mutations: {
         setShopCar(state:any,payload:any){
-            console.log(payload.cartList,'-----carList')
+            // console.log(payload.cartList,'-----carList')
             state.cartList=payload.cartList,
             state.cartTotal=payload.cartTotal
             state.sucessNum=payload.cartList.length
