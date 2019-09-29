@@ -90,7 +90,7 @@ const router=new Router({
       component: ()=>import('../views/goodsSearch/index.vue')
     },
     {
-      name: '收藏商品',
+      name: 'collect',
       path: '/collect',
       // isTab: false,
       component: ()=>import('../views/collect/index.vue')

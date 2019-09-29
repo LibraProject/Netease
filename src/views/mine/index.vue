@@ -31,72 +31,74 @@ export default {
           fn: true,
           icon: "iconfont icon-gongzuojilu",
           name: "我的收藏",
-          id: 0
+          id: 0,
+          pathName:"collect"
         },
         {
           fn: true,
           icon: "iconfont icon-address",
           name: "地址管理",
-          id: 1
+          id: 1,
+          pathName:"address"
         },
         {
           fn: false,
           icon: "iconfont icon-wodedingdan",
-          name: "我的订单",
+          pathName:'',name: "我的订单",
           id: 2
         },
         {
           fn: false,
           icon: "iconfont icon-riqixuanze",
-          name: "周末拼单",
+          pathName:'',name: "周末拼单",
           id: 3
         },
         {
           fn: false,
           icon: "iconfont icon-youhuiquan-01",
-          name: "优惠券",
+          pathName:'',name: "优惠券",
           id: 4
         },
         {
           fn: false,
           icon: "iconfont icon-zhifu-01",
-          name: "优选购",
+          pathName:'',name: "优选购",
           id: 5
         },
         {
           fn: false,
           icon: "iconfont icon-31",
-          name: "我的红包",
+          pathName:'',name: "我的红包",
           id: 6
         },
         {
           fn: false,
           icon: "iconfont icon-xiala",
-          name: "会员plus",
+          pathName:'',name: "会员plus",
           id: 7
         },
         {
           fn: false,
           icon: "iconfont icon-faxiandingdan",
-          name: "邀请返利",
+          pathName:'',name: "邀请返利",
           id: 8
         },
         {
           fn: false,
           icon: "iconfont icon-quanbudingdan-01",
-          name: "意见反馈",
+          pathName:'',name: "意见反馈",
           id: 9
         },
         {
           fn: false,
           icon: "iconfont icon-erji",
-          name: "客服咨询",
+          pathName:'',name: "客服咨询",
           id: 10
         },
         {
           fn: false,
           icon: "iconfont icon-50",
-          name: "账户安全",
+          pathName:'',name: "账户安全",
           id: 12
         }
       ]
@@ -107,7 +109,7 @@ export default {
     clickME(i) {
       let flag = this.userlist[i].fn
       if(flag){
-          this.$router.push({name:'address',params:{id:this.userlist[i].name}})
+          this.$router.push({name:this.userlist[i].pathName,params:{id:this.userlist[i].name}})
       }else{
         alert(this.userlist[i].name+'还未完善')
       }

@@ -1,12 +1,7 @@
 <template>
   <div class="BScrollwrap">
     <div class="bscrollChild">
-      <!-- <div class="categoryDetail">
-        <div>{{msgName.name}}</div>
-        <div>{{msgName.frontName}}</div>
-      </div> -->
       <slot name="headDetail"></slot>
-
       <slot :data="list.value"></slot>
       <p class="bsUp">{{msgUp}}</p>
       <p class="bsDown">{{msgDown}}</p>

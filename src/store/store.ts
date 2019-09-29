@@ -9,7 +9,7 @@ import catalog from './modules/catalog'
 import good from './modules/good'
 import cart from './modules/cart'
 import category from './modules/category'
-
+import address from './modules/address'
 Vue.use(Vuex)
 export default new Vuex.Store({
   modules: {
@@ -18,7 +18,8 @@ export default new Vuex.Store({
     catalog,
     good,
     cart,
-    category
+    category,
+    address
   },
   plugins: [createLogger()]
 })

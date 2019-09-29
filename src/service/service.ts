@@ -27,3 +27,7 @@ export let branddetail = (id:any)=>{
 export let brandList = (obj?:any)=>{
      return request.get('/goods/list',{params:obj})
 }
+// 获取用户地址
+export let getAddress = ()=>{
+     return request.get('/address/list')
+}
