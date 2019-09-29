@@ -9,3 +9,8 @@ export let search = () => {
 export let searchDetail = (params:any) => {
     return requerst.get("/goods/list",{params});
 };
+
+// 删除商品
+export let searchDel=()=>{
+    return requerst.get('/search/clearhistory')
+}

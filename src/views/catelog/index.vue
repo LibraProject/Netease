@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { headers, foots } from "@/components";
+import { foots } from "@/components";
 import { mapState, mapActions } from "vuex";
 export default {
   data() {
@@ -49,7 +49,7 @@ export default {
       id: "1005000"
     };
   },
-  components: { headers, foots },
+  components: { foots },
   computed: {
     ...mapState("catalog", ["classList", "renderArr"])
   },
@@ -107,6 +107,7 @@ export default {
     }
 }
 .main {
+  flex: 1;
   display: flex;
   width: 100%;
   height: 100%;

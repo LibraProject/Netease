@@ -5,7 +5,6 @@ export default {
     state: {
         categorysArr: [],
         renderArr: [],
-<<<<<<< HEAD
         renderList:[],
         brandArr:{},
         name:'',
@@ -23,22 +22,6 @@ export default {
             let index = payload.data.findIndex((el:any) => el.id == payload.id);
             state.name=payload.data[index].name
             state.frontName=payload.data[index].front_name
-=======
-        renderList: [],
-        brandArr: {},
-        name: '',
-        frontName: ''
-    },
-    mutations: {
-        setRend(state: any, payload: any) {
-            state.renderArr = payload
-        },
-        setCate(state: any, payload: any) {
-            state.categorysArr = payload.data.categoryList;
-            let index = payload.data.categoryList.findIndex((el: any) => el.id == payload.id);
-            state.name = payload.data.categoryList[index].name
-            state.frontName = payload.data.categoryList[index].front_name
->>>>>>> cyz
         },
         setGood(state: any, payload: any) {
             state.renderList = payload.data
@@ -51,16 +34,11 @@ export default {
         }
     },
     actions: {
-<<<<<<< HEAD
         // 分类右下对应内容
         async category({commit}: any,id:any){
-=======
-        async category({ commit }: any, id: any) {
->>>>>>> cyz
             let result = await category(id)
             commit('setRend', result.data.currentCategory.subCategoryList)
         },
-<<<<<<< HEAD
         // 分类左侧列表初始化
         async getCategorys({ commit }: any) {
             let result = await catalog()
@@ -68,14 +46,6 @@ export default {
         },
         // 奇趣分类中对应的内容选项
         async getGood({ commit }: any,payload:any) {
-=======
-        async categorys({ commit }: any, id: any) {
-            let result = await categorys()
-            commit('setCate', { data: result.data, id })
-
-        },
-        async getGood({ commit }: any, payload: any) {
->>>>>>> cyz
             let result = await goodList(payload)
             commit('setGood', result.data)
         },

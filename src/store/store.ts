@@ -11,6 +11,7 @@ import cart from './modules/cart'
 import category from './modules/category'
 import address from './modules/address'
 import search from './modules/search'
+import collect from './modules/collect'
 
 Vue.use(Vuex)
 export default new Vuex.Store({
@@ -22,7 +23,8 @@ export default new Vuex.Store({
     cart,
     category,
     address,
-    search
+    search,
+    collect
   },
   plugins: [createLogger()]
 })

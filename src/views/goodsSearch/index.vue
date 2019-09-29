@@ -7,13 +7,13 @@
                    <svg t="1569658740959" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2534" width="30" height="30"><path d="M465.4 654.3c-48.4 0-96.8-18.4-133.6-55.2-73.7-73.7-73.7-193.6 0-267.3 73.7-73.7 193.6-73.7 267.3 0 73.7 73.7 73.7 193.6 0 267.3-36.9 36.8-85.3 55.2-133.7 55.2z m0-335.8c-37.7 0-75.3 14.3-104 43-57.3 57.3-57.3 150.6 0 207.9 57.3 57.3 150.6 57.3 207.9 0 57.3-57.3 57.3-150.6 0-207.9-28.6-28.7-66.3-43-103.9-43z" fill="#707070" p-id="2535"></path><path d="M569.288 599.035l29.698-29.698 148.491 148.49-29.698 29.699z" fill="#707070" p-id="2536"></path><path d="M570.4 465.4h-42c0-34.7-28.3-63-63-63v-42c57.9 0 105 47.1 105 105z" fill="#707070" p-id="2537"></path></svg>
                </div>
                <input type="text" placeholder="520元礼包抢先领" class="searchInput" :value="valChooes">
-               <div class="cancelSearch">取消</div>
+               <div class="cancelSearch" @click="cancel">取消</div>
            </div>
            <div class="searchMsg" v-if="isShow===true">
                <div class="searchItemWrap">
                    <div class="title">
                        <span>历史记录</span>
-                       <img src="/img/del-address.png" alt="">
+                       <img src="/img/del-address.png" alt="" @click="del">
                    </div>
                    <div class="listWrap">
                        <button class="listItem" v-for="(item,i) in historyLsit" :key="i" @click="listclick(item)">{{item}}</button>
@@ -34,7 +34,7 @@
        <div class="searchGoods" v-if="isShow===false">
             <ul class="searchConditionWrap">
                 <li :class="{active:ind===0}" @click="navClick(0,'id','default')">综合</li>
-                <li :class="{active:ind===1}" @click="priceClick(1,'price','asc')">价格</li>
+                <li :class="{active:ind===1}" @click="priceClick(1,'price')">价格</li>
                 <li :class="{active:ind===2}" @click="navClick(2,'id','desc')">全部分类</li>
             </ul>
             <div class="goods">
@@ -54,6 +54,7 @@
                 isShow:true,
                 valChooes:'',
                 ind:0,
+                cont:true
             }
         },
         components: { cateGoryGoods },
@@ -61,8 +62,9 @@
             ...mapState("search", ["historyLsit", "hotList","goodArr"])
         },
         methods: {
-            ...mapActions("search", ["getSearch","getSearchDetail"]),
+            ...mapActions("search", ["getSearch","getSearchDetail","getSearchDel"]),
             listclick(keyword){
+                this.getSearch()
                 this.getSearchDetail({keyword, page: 1, size: 100, sort: 'id', order: 'desc', categoryId: 0})
                 this.isShow=false
                 this.valChooes=keyword
@@ -70,14 +72,30 @@
             goBack(){
                 this.$router.history.go(-1)
             },
+            cancel(){
+                this.isShow=true
+                this.getSearch()
+                this.valChooes=''
+            },
+            del(){
+                this.getSearchDel()
+                this.getSearch()
+
+            },
             navClick(i,sort,order){
                 console.log(i,sort,this.valChooes)
                 this.getSearchDetail({keyword:this.valChooes, page: 1, size: 100, sort, order, categoryId: 0})
                 this.ind=i
             },
             priceClick(i,sort,order){
-                console.log(i,sort,this.valChooes)
-                this.getSearchDetail({keyword:this.valChooes, page: 1, size: 100, sort, order, categoryId: 0})
+                if(this.cont){
+                    this.getSearchDetail({keyword:this.valChooes, page: 1, size: 100, sort, order:'asc', categoryId: 0})
+                    this.cont=false
+                }else{
+                    this.getSearchDetail({keyword:this.valChooes, page: 1, size: 100, sort, order:'desc', categoryId: 0})
+                    this.cont=true
+                }
+                
                 this.ind=i
             },
         },

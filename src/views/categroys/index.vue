@@ -67,7 +67,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions("catalog", ["categorys", "getGoodCategory"]),
+    ...mapActions("catalog", ["getGoodCategory"]),
     ...mapActions({
       pullRefresh: "category/pullRefresh"
     }),
@@ -83,16 +83,6 @@ export default {
       this.setCategoryId(id);
       this.pullRefresh();
     }
-    // setMsg() {
-    //   let index = this.element.findIndex(el => el.id == this.id);
-    //   this.obj.name = this.element[index].name;
-    //   this.obj.frontName = this.element[index].front_name;
-    // },
-    // getCategoryList: async that => {
-    //   let data = await getCategory();
-    //   that.element = data.categoryList;
-    //   that.setMsg();
-    // }
   },
   mounted() {
     //导航的better-scroll
@@ -107,11 +97,9 @@ export default {
   },
   created() {
     this.id = this.$route.params.id;
-    // this.getCategoryList(this);
 
     // 分类各项的跳转
     this.getGoodCategory({ id: this.id });
-    this.categorys(this.id);
   },
   watch: {
     id(id) {
