@@ -44,8 +44,7 @@ export default {
   data() {
     return {
       txt: "奇趣分类",
-      id: "1005000",
-      // element: [],
+      id: "1005000", 
       scroll: null,
       obj: {
         name: "",
@@ -84,6 +83,7 @@ export default {
       this.setCategoryId(id);
       this.pullRefresh();
     }
+<<<<<<< HEAD
     // setMsg() {
     //   let index = this.element.findIndex(el => el.id == this.id);
     //   this.obj.name = this.element[index].name;
@@ -94,6 +94,8 @@ export default {
     //   that.element = data.categoryList;
     //   that.setMsg();
     // }
+=======
+>>>>>>> cyz
   },
   mounted() {
     //导航的better-scroll
@@ -108,17 +110,26 @@ export default {
   },
   created() {
     this.id = this.$route.params.id;
+<<<<<<< HEAD
     // this.getCategoryList(this);
 
     // 分类各项的跳转
     this.getGoodCategory({ id: this.id });
+=======
+    this.categorys(this.id);
+>>>>>>> cyz
   },
   watch: {
     id(id) {
-      // console.log(id ,'-------------id')
       let target = this.$refs[id]; //点击的每一项
+<<<<<<< HEAD
       this.scroll.scrollToElement(target[0], 500);
     }
+=======
+      target && this.scroll.scrollToElement(target[0], 500);
+    },
+
+>>>>>>> cyz
   }
 };
 </script>
