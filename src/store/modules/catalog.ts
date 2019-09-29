@@ -13,11 +13,9 @@ export default {
     },
     mutations: {
         setRend(state:any,payload: any){
-            // console.log(payload,'head----------')
             state.renderArr = payload
         },
         setCate(state: any, payload: any) {
-            console.log(payload,'----setCate')
             state.categorysArr = payload.data;
             let index = payload.data.findIndex((el:any) => el.id == payload.id);
             state.name=payload.data[index].name

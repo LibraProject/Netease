@@ -3,7 +3,7 @@
     <headers :txt="txt" />
     <div class="cateBox">
       <div class="catd" ref="catd">
-        <div class="content">
+        <div class="content" ref="catdArr">
           <span
             v-for="(ele) in categorysArr"
             :class="{cative:id==ele.id}"
@@ -78,7 +78,6 @@ export default {
       this.obj.name = ele.name;
       this.obj.frontName = ele.front_name;
       this.id = id;
-
       // 获取第一页数据
       this.setCategoryId(id);
       this.pullRefresh();
@@ -97,7 +96,6 @@ export default {
   },
   created() {
     this.id = this.$route.params.id;
-
     // 分类各项的跳转
     this.getGoodCategory({ id: this.id });
   },

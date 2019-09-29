@@ -3,41 +3,15 @@
     <headers :txt="title"></headers>
     <div class="bg"></div>
     <div class="main">
-      <div class="collectItem">
-        <div class="collectName">李狗蛋</div>
+     
+      <div class="collectItem" v-for="(el,index) in addressList" :key="el.name+index">
+        <div class="collectName">{{el.name}}</div>
         <div class="collectAddress">
-          <p>12345678901</p>
-          <p>北京市 海定区 上地街道</p>
+          <p>{{el.mobile}}</p>
+          <p>{{el.address}}</p>
           <p>北京市 海定区 上地街道 上地七街</p>
         </div>
-        <div class="collectDelete">删除</div>
-      </div>
-      <div class="collectItem">
-        <div class="collectName">李狗蛋</div>
-        <div class="collectAddress">
-          <p>12345678901</p>
-          <p>北京市 海定区 上地街道</p>
-          <p>北京市 海定区 上地街道 上地七街</p>
-        </div>
-        <div class="collectDelete">删除</div>
-      </div>
-      <div class="collectItem">
-        <div class="collectName">李狗蛋</div>
-        <div class="collectAddress">
-          <p>12345678901</p>
-          <p>北京市 海定区 上地街道</p>
-          <p>北京市 海定区 上地街道 上地七街</p>
-        </div>
-        <div class="collectDelete">删除</div>
-      </div>
-      <div class="collectItem">
-        <div class="collectName">李狗蛋</div>
-        <div class="collectAddress">
-          <p>12345678901</p>
-          <p>北京市 海定区 上地街道</p>
-          <p>北京市 海定区 上地街道 上地七街</p>
-        </div>
-        <div class="collectDelete">删除</div>
+        <div class="collectDelete" @click="addDele(el.id)">删除</div>
       </div>
     </div>
     <div class="addMeta" @click="add">+ 添加地址</div>
@@ -85,12 +59,15 @@ export default {
   },
   components: { headers },
   methods: {
-    ...mapActions("address", ["getAddressList"]),
+    ...mapActions("address", ["getAddressList",'deleteAddress']),
     add() {
       this.flag = true;
     },
     cacel() {
       this.flag = false;
+    },
+    addDele(id){
+      this.deleteAddress(id)
     }
   },
   computed: {
@@ -123,6 +100,7 @@ export default {
     flex: 1;
     padding: 0.1rem;
     padding-top: 0.55rem;
+    overflow-y: scroll;
     .collectItem {
       width: 100%;
       display: flex;

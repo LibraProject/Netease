@@ -40,7 +40,6 @@ const actions = {
                 params[key] = state.query[key]
             }
         }
-        // console.log('params...', params);
         let data: any = await goodList(params);
         commit('setValue', data.data);
     },
@@ -53,8 +52,6 @@ const actions = {
                 params[key] = state.query[key]
             }
         }
-        // console.log('params...', params, page);
-
         let data: any = await goodList(params);
         commit('appendValue', data.data);
     }
