@@ -220,6 +220,9 @@
             padding: 0;
             width: 1.3rem;
         }
+        .pay:active{
+            background: #f52b2b;
+        }
     }
     .cartGoodEditWrap{
         flex: 1;

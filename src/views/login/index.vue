@@ -21,8 +21,8 @@
     export default {
         data() {
           return {
-              mobile:'' || window.localStorage.getItem('nideShopUser'),
-              password:'' || window.localStorage.getItem('password'),
+              mobile:'15323807318' || window.localStorage.getItem('nideShopUser'),
+              password:'123456' || window.localStorage.getItem('password'),
           }
         },
         methods: {

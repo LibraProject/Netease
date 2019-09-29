@@ -49,6 +49,9 @@
         padding: .05rem;
     }
     .routerActive{
+        svg{
+            transform: scale(1.3)
+        }
         color: skyblue;
     }   
     
