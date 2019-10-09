@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://169.254.198.188:8888',
+    baseURL: 'http://169.254.94.87:8888',
     timeout: 2000,
     headers: { 'x-nideshop-token': window.localStorage.getItem('token') }
 });
