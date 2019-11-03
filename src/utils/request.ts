@@ -1,35 +1,35 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'http://169.254.94.87:8888',
-    timeout: 2000,
-    headers: { 'x-nideshop-token': window.localStorage.getItem('token') }
+  baseURL: 'http://169.254.129.94:8888',
+  timeout: 2000,
+  headers: { 'x-nideshop-token': window.localStorage.getItem('token') }
 });
 
 // 请求拦截器
-instance.interceptors.request.use((config) =>{
-    return config;
-  }, (error)=> {
-  
-    return Promise.reject(error);
-  }
+instance.interceptors.request.use((config) => {
+  return config;
+}, (error) => {
+
+  return Promise.reject(error);
+}
 );
 // 响应拦截器
-instance.interceptors.response.use( response =>{
-    if(response.status !== 200 ){
-      console.log(response.status)
-    }
-    return response.data;
-  },  (error) =>{
-    try {
-      console.log(error);
+instance.interceptors.response.use(response => {
+  if (response.status !== 200) {
+    console.log(response.status)
   }
-  catch(err) {
-      console.log(err)
+  return response.data;
+}, (error) => {
+  try {
+    console.log(error);
   }
-    
-    return Promise.reject(error);
+  catch (err) {
+    console.log(err)
   }
+
+  return Promise.reject(error);
+}
 );
 
 export default instance;
